@@ -28,5 +28,3 @@ Requires `ExwindCore`, `ExwindTools`, `EXBossData`, `EXBoss`, and
 Composite of three licenses — see [`CREDITS.md`](CREDITS.md): addon
 code MIT, voice pack GPL, translation overlay attributed to EXWIND
 under CC BY-NC-ND 4.0.
-
-Unofficial fan project. Not affiliated with EXWIND or Causese.
