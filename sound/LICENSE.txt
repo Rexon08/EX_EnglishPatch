@@ -1,0 +1,27 @@
+Causese English Voice Pack
+==========================
+
+Author:   Causese
+License:  GNU General Public License
+Files:    every *.ogg file in this directory
+
+This voice pack is bundled with EX_EnglishPatch under GPL § "mere
+aggregation" (GPL v2 § 2 / GPL v3 § 5). The rest of EX_EnglishPatch is
+licensed MIT (see ../LICENSE). Each component is governed by its own
+license; bundling does not relicense either part.
+
+Author did not specify a GPL version. Recipients may rely on the GPL
+under any version published by the Free Software Foundation, per
+standard practice when no version is specified.
+
+GPL canonical text:
+- v3: https://www.gnu.org/licenses/gpl-3.0.txt
+- v2: https://www.gnu.org/licenses/gpl-2.0.txt
+
+If you redistribute these voice samples (with or without the rest of
+this addon) you must comply with the GPL — including attribution to
+Causese and providing a copy of the GPL or a link to it.
+
+If you are Causese and the attribution or version above is incorrect
+or you wish to update the license, open an issue on the project
+repository and the maintainers will correct this file.

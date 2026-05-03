@@ -1,0 +1,64 @@
+## Interface: 120005, 120001
+## Title: |cff00ccffEX|r English Patch
+## Notes: EXWIND addons, in English. Live UI overlay — never writes to saved variables.
+## Author: Rexon08
+## Version: 1.0.0
+## RequiredDeps: ExwindCore, ExwindTools, EXBossData, EXBoss, EXBOSS-EXWIND
+## SavedVariables: EX_EnglishPatchDB
+## Category-enUS: AddOns
+## AddonCompartmentFunc: EX_EnglishPatch_OnCompartmentClick
+## IconTexture: Interface\AddOns\EX_EnglishPatch\Textures\Icon.png
+## X-License: MIT
+## X-License-Note: Code MIT; sound/*.ogg GPL (Causese); see CREDITS.md for upstream attribution.
+
+# Core (namespace, idempotency, log, DB, combat queue, event bus)
+Core\Init.lua
+Core\Idempotency.lua
+Core\Log.lua
+Core\DB.lua
+Core\Combat.lua
+Core\EventBus.lua
+Core\Resolver.lua
+Core\Font.lua
+
+# Translations (pure data tables; no side effects beyond filling namespace tables)
+Translations\Maps.lua
+Translations\Encounters.lua
+Translations\Spells.lua
+Translations\EventTypes.lua
+Translations\VoiceLabels.lua
+Translations\ExwindCoreL.lua
+Translations\ExBossL.lua
+Translations\ModuleStrings.lua
+Translations\LabelOverrides.lua
+
+# Patches (each registers ADDON_LOADED handlers; runs once per scope, marker-guarded)
+Patches\_Helpers.lua
+Patches\LocaleStores.lua
+Patches\ModuleLayouts.lua
+Patches\StaticPopups.lua
+Patches\EncounterData.lua
+Patches\PrivateAuraData.lua
+Patches\TrashCDData.lua
+Patches\TrashCDPreset.lua
+Patches\MobSpellsData.lua
+Patches\VoicePack.lua
+Patches\CenterAlertText.lua
+Patches\PrintText.lua
+Patches\TimelineRebuild.lua
+Patches\MythicDamageFormat.lua
+Patches\FontEnforce.lua
+
+# UI hooks (hooksecurefunc only; gated by combat queue)
+UI\WidthFit.lua
+UI\WatchSetText.lua
+UI\BossPageHooks.lua
+UI\PanelFrameHooks.lua
+UI\InterruptTrackerHooks.lua
+UI\MobSpellsHooks.lua
+UI\DropdownAdapter.lua
+UI\DropdownPoolCleanup.lua
+UI\TextReplacementHooks.lua
+UI\VoicePackPageHooks.lua
+UI\DogJumpTrackerHooks.lua
+UI\SettingsPanel.lua
