@@ -152,12 +152,18 @@ ns.Translations.ExwindCoreL = {
     ["文字设置"] = "Text Settings",
 
     -- ExTools.InstanceNote (per-instance note panel)
-    ["启用功能"]   = "Enable",
-    ["地下城"]     = "Dungeon",
-    ["团队副本"]   = "Raid",
-    ["选择副本"]   = "Select Instance",
-    ["选择首领"]   = "Select Boss",
-    ["备注内容"]   = "Note Text",
+    ["启用功能"]           = "Enable",
+    ["地下城"]             = "Dungeon",
+    ["团队副本"]           = "Raid",
+    ["选择副本"]           = "Select Instance",
+    ["选择首领"]           = "Select Boss",
+    ["备注内容"]           = "Note Text",
+    ["首领备注预览"]       = "Boss Note Preview",
+    ["这里显示副本备注内容"] = "Dungeon note text appears here.",
+    ["这里显示首领备注内容"] = "Boss note text appears here.",
+
+    -- ExM+.MythicCast (mythic-cast bar visibility option)
+    ["隐藏92级读条"] = "Hide Level 92 Casts",
 
     -- ExTools.PveKeystoneInfo
     ["在 PVEFrame 上显示玩家与队友钥石信息。"] = "Shows player and party keystone info on the PVE frame.",
