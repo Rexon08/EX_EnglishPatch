@@ -96,6 +96,11 @@ ns.Translations.ExBossL = {
     ["自定义事件"]       = "Custom Event",
     ["自定义小怪事件"]   = "Custom Mob Event",
     ["自定义小怪事件。"] = "Custom mob event.",
+    ["首次施法开始"]     = "First Cast Start",
+    ["施法开始"]         = "Cast Start",
+    ["首次引导开始"]     = "First Channel Start",
+    ["引导开始"]         = "Channel Start",
+    ["小怪提示"]         = "Mob Alert",
 
     -- Edit Mode panel section titles
     ["进入战斗提示"] = "Combat Enter Alert",
