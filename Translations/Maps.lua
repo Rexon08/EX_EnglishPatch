@@ -19,7 +19,6 @@ ns.Translations.Maps = {
 ns.Translations.MapNamesByZh = {
     ["执政团之座"] = "Seat of the Triumvirate",
     ["梦境裂隙"] = "Rift of the Dream",
-    ["纳洛拉克的洞穴"] = "Narolak's Cave",
     ["艾杰斯亚学院"] = "Algeth'ar Academy",
     ["节点希纳斯"] = "Nexus-Point Xenas",
     ["萨隆矿坑"] = "Pit of Saron",

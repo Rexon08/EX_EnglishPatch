@@ -164,6 +164,12 @@ ns.Translations.ExwindCoreL = {
 
     -- ExM+.MythicCast (mythic-cast bar visibility option)
     ["隐藏92级读条"] = "Hide Level 92 Casts",
+    ["坦克职责下不显示"] = "Hide for Tank Role",
+    ["玩家目标提示"]     = "Player Target Indicator",
+    ["提示材质"]         = "Indicator Texture",
+    ["提示大小"]         = "Indicator Size",
+    ["提示X偏移"]        = "Indicator X Offset",
+    ["提示Y偏移"]        = "Indicator Y Offset",
 
     -- ExTools.PveKeystoneInfo
     ["在 PVEFrame 上显示玩家与队友钥石信息。"] = "Shows player and party keystone info on the PVE frame.",

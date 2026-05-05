@@ -90,6 +90,13 @@ ns.Translations.ExBossL = {
     -- SpellPage row reset button
     ["重置"] = "Reset",
 
+    -- TrashCDPage custom-event labels (12.0.5 upstream)
+    ["触发类型"]         = "Trigger Type",
+    ["事件分类"]         = "Event Type",
+    ["自定义事件"]       = "Custom Event",
+    ["自定义小怪事件"]   = "Custom Mob Event",
+    ["自定义小怪事件。"] = "Custom mob event.",
+
     -- Edit Mode panel section titles
     ["进入战斗提示"] = "Combat Enter Alert",
     ["离开战斗提示"] = "Combat Leave Alert",

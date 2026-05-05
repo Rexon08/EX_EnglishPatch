@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
--- Auto-generated. spellID -> English. The same English name may appear
--- under multiple IDs when one zh name spans several spells.
+-- Auto-generated. spellID -> English. The same English name may
+-- appear under multiple IDs when one zh name spans several spells.
 local _, ns = ...
 
 ns.Translations.Spells = {
@@ -47,6 +47,7 @@ ns.Translations.Spells = {
     [1257155] = "Rain of Toads",
     [1257546] = "Vigilant Defense",
     [1257701] = "Searing Rend",
+    [1257781] = "Shredding Talons",
     [1257895] = "Ancestral Crush",
     [1258174] = "Dread Wind",
     [1258217] = "Solar Fire",
@@ -133,6 +134,7 @@ ns.Translations.SpellNamesByZh = {
     ["恐惧咆哮"] = "Dreadbellow",
     ["投掷萨隆邪铁"] = "Saronite Bombardment",
     ["抽取虚空"] = "Leeching Void",
+    ["撕裂利爪"] = "Shredding Talons",
     ["撕裂角刺"] = "Rending Gore",
     ["日光新星"] = "Solar Nova",
     ["日光烈焰"] = "Solar Flame",
