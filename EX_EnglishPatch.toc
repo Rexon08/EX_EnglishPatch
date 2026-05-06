@@ -2,7 +2,7 @@
 ## Title: |cff00ccffEX|r English Patch
 ## Notes: EXWIND addons, in English. Live UI overlay — never writes to saved variables.
 ## Author: Rexon08
-## Version: 1.0.4
+## Version: 1.0.5
 ## RequiredDeps: ExwindCore, ExwindTools, EXBossData, EXBoss, EXBOSS-EXWIND
 ## SavedVariables: EX_EnglishPatchDB
 ## Category-enUS: AddOns
@@ -42,6 +42,7 @@ Patches\PrivateAuraData.lua
 Patches\TrashCDData.lua
 Patches\TrashCDPreset.lua
 Patches\TrashCDCustomEvents.lua
+Patches\ChangelogContent.lua
 Patches\MobSpellsData.lua
 Patches\VoicePack.lua
 Patches\CenterAlertText.lua

@@ -141,6 +141,44 @@ ns.Translations.ModuleStrings.DisplayText = {
     ["配置方案"] = "Profiles",
     ["当前职责："] = "Current role: ",
 
+    -- EXBoss Home page — voice-pack author lines (HomePage.lua VOICE_PACKS).
+    -- Each entry already carries the English handle in parens; collapsing
+    -- to just the English avoids the redundant "Yike(Yike)" outcome that
+    -- per-name substitution would produce.
+    ["夏一可(Yike)"] = "Yike",
+    ["顾衣衿(Guyijin)"] = "Guyijin",
+    ["砂糖悠鸣(SatouYumei)"] = "SatouYumei",
+    ["糖糖酱(Tangtangjiang)"] = "Tangtangjiang",
+    ["毬亚(Akumaria)"] = "Akumaria",
+    ["然然(Ranran)"] = "Ranran",
+    ["忘忧景久(WYJJ)"] = "WYJJ",
+    ["步萌(Boom)"] = "Boom",
+    ["你好牛(Niuniu)"] = "Niuniu",
+    ["露露緹婭(Rurutia)"] = "Rurutia",
+    ["绫零(Ayarei)"] = "Ayarei",
+    ["初音软芙芙(mikufufu)"] = "mikufufu",
+    ["可乐(kele)"] = "kele",
+    ["苏苏(SUSU)"] = "SUSU",
+    ["小羊(Yagi)"] = "Yagi",
+    ["小月灼(Moonburn)"] = "Moonburn",
+    ["捏口捏(Nico)"] = "Nico",
+    ["哈老师(Hati)"] = "Hati",
+    ["静静(Jingjing)"] = "Jingjing",
+    ["桃桃(TAOTAO)"] = "TAOTAO",
+    ["鲜克(AC)"] = "AC",
+    ["猫猫茶壶(NyanyaTea)"] = "NyanyaTea",
+
+    -- EXBoss Home page — contributor handle lists (HomePage.lua CreditLine).
+    -- These are personal handles with no English form; transliterated via
+    -- pinyin so the row is at least readable on a Latin-only font.
+    ["@绿色歹人 @小海牛 @露露緹婭 @苏苏 @誓小言"] =
+        "@LüseDairen @Xiaohainiu @Rurutia @Susu @Shixiaoyan",
+    ["@C姓水友 @Semage @数字布丁 @Shun @硬玩复仇"] =
+        "@CXingShuiyou @Semage @ShuziBuding @Shun @HardplayVengeance",
+
+    -- Feedback section — Bilibili link box label.
+    ["EX-WIND(私信)"] = "EX-WIND (DM)",
+
     -- Common class/spec display values used in multiselect widgets.
     ["战士"] = "Warrior",
     ["圣骑士"] = "Paladin",
