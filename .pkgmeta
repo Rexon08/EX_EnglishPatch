@@ -1,0 +1,14 @@
+# CurseForge addon-packager metadata.
+# https://github.com/BigWigsMods/packager#pkgmeta
+#
+# Without this file the packager builds a changelog from `git show` of
+# the tagged commit, which leaks tag SHA, Author, Date and the commit
+# body around the actual notes. Pointing it at CHANGES.md makes the
+# CurseForge file changelog identical to what we ship in CHANGES.md —
+# a short, user-readable bullet list per version.
+
+package-as: EX_EnglishPatch
+
+manual-changelog:
+  filename: CHANGES.md
+  markup-type: markdown
