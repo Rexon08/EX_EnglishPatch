@@ -207,4 +207,22 @@ ns.Translations.ExBossL = {
     ["SHUN · 通天峰"] = "SHUN · Skyreach",
     ["SHUN · 风行者之塔"] = "SHUN · Windrunner Spire",
     ["SHUN · 魔导师平台"] = "SHUN · Magisters' Terrace",
+
+    -- BossPage trigger rows: TTS option in voice-source dropdown + per-row label
+    ["TTS文本"] = "TTS Text",
+    ["TTS语音"] = "TTS Voice",
+
+    -- HomePage credits: special-help, localization, English-translation panels
+    ["特别协助"]                                       = "Special Assistance",
+    ["感谢在开发验证与实战反馈中提供直接协助的朋友。"] = "Thanks to friends who helped directly with development testing and feedback.",
+    ["英文本地化翻译"]                                 = "English Localization",
+    ["英文本地化翻译与翻译插件协助。"]                 = "English localization and translation plugin assistance.",
+    ["本地化翻译插件协助"]                             = "Localization Plugin Assistance",
+
+    -- ImportExport page: preset-pack snippet export
+    ["导出字符串"]                                                  = "Export String",
+    ["预设插件片段"]                                                = "Preset Pack Snippet",
+    ["导出预设插件片段"]                                            = "Export Preset Pack Snippet",
+    ["预设插件片段已生成"]                                          = "Preset pack snippet generated.",
+    ["把内容粘贴到模板插件的 Config/PresetPayload.lua 后即可打包。"] = "Paste the contents into the template addon's Config/PresetPayload.lua, then package it.",
 }

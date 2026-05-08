@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.7
+
+- Absorb the latest EXBoss / EXBossData / ExwindTools upstream sync.
+- Translate the new EXBoss Home page "Special Assistance" and "English Localization" credit sections.
+- Translate the new "Preset Pack Snippet" export button, popup title, and instructions on the Import / Export page.
+- Translate the new TTS voice-source option and TTS Text input label on the Boss spell trigger rows.
+
 ## v1.0.6
 
 - Switch CurseForge changelogs to a curated `CHANGES.md` so each release shows clean bullets instead of raw git metadata. No in-game changes.
