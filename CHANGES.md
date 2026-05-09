@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.8
+
+- Absorb upstream EXBoss v26.5.9.1813. Boss cast / channel system was reworked upstream and now resolves spell names locale-aware, so EXBoss cast progress bars, ring-progress bars, and the cast-bar "Test Cast / Test Channel" preview render in English without extra patching.
+- Translate the new Pit of Saron private aura "Shadow Bomb" (1271679) on Ick and Krick (Shade of Krick).
+
 ## v1.0.7
 
 - Absorb the latest EXBoss / EXBossData / ExwindTools upstream sync.
