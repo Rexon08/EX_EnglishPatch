@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.0.9
+
+- Absorb the 2026-05-15 upstream sync (EXBoss v26.5.15.0857, ExwindCore / ExwindTools / EXBossData / EXBOSS-EXWIND).
+- Translate the new GlobalSettings "Nameplate Icon Strata" dropdown (Background / Low / Medium / High / Fullscreen / Tooltip).
+- Translate the new Import / Export rows for built-in Author Lua and Author-Plugin Lua exports (button labels, generated-snippet popups, paste instructions, Boss-slot warning).
+- Translate the new Voice Category field on the boss Private Aura detail card.
+- Translate Shockwave (1279002) on Araknath in Skyreach.
+- Refresh the in-game EXBoss Changelog popup with English entries for v26.5.7 through v26.5.15.
+
 ## v1.0.8
 
 - Absorb upstream EXBoss v26.5.9.1813. Boss cast / channel system was reworked upstream and now resolves spell names locale-aware, so EXBoss cast progress bars, ring-progress bars, and the cast-bar "Test Cast / Test Channel" preview render in English without extra patching.

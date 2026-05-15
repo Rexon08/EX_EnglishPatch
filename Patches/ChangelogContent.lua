@@ -15,6 +15,82 @@ local _, ns = ...
 local StashOriginal = ns.Patches.StashOriginal
 
 local EXBOSS_CHANGELOG_EN = [[
+@H1@ v26.5.15.0857
+
+@H2@ General
+- Fixed the timer-bar border issue.
+- Trash CD nameplate icons now expose a frame-strata option.
+- Large-scale English localization continues — please allow another 1-2 days for full coverage.
+
+@H1@ v26.5.14.0721
+
+@H2@ Algeth'ar Academy
+- Fixed trash mobs being misidentified after Boss 2.
+
+@H2@ Inference System
+- Disabled the L2 behavior that prematurely locked an NPC from its expected first-cast timing (most visible in Skyreach).
+
+@H1@ v26.5.14.0503
+
+@H2@ General
+- Added the automatic dungeon-gossip module (Auto Gossip).
+
+@H2@ Localization
+- Added an English voice pack. It switches automatically by default; if you hit issues, flip it manually in Settings → Voice / Config.
+
+@H2@ Nexus-Point Xenas
+- Fixed the spurious cast-progress-bar alert for Corespark Detonation (1257509) on Boss 1.
+
+@H1@ v26.5.13.1931
+
+@H2@ Seat of the Triumvirate — Boss 2 (Saprish)
+- Dog-jump target alert now shares the raid-frame glow style from settings, so you can customise its look (colour still fixed for now).
+
+@H2@ Center Countdown Text
+- Removed icon borders when the scheduler runs on Blizzard's native timeline, avoiding the secret-value error path.
+
+@H2@ Other
+- Added a warning when the Enemy Highlight Mythic+ affix is enabled — it confuses the trash-CD pipeline. Disable it at the keystone NPC.
+
+@H1@ v26.5.13.1633
+
+@H2@ Private Aura
+- Fixed the Private Aura settings UI. (Batch editing for Private Aura is still in progress — please don't use it yet.)
+
+@H2@ Cast Progress Bar
+- Added vertical spacing adjustment.
+- Bumped border layering so the order is now Text > Border > Bar body.
+
+@H2@ Trash CD (Nameplate Icons)
+- Reworked the anchor logic. Report any remaining issues.
+
+@H1@ v26.5.12.2252
+
+@H2@ Batch Settings
+- New Batch Settings page in the Settings interface — edit large numbers of abilities at once.
+
+@H1@ v26.5.9.1953
+
+@H2@ Algeth'ar Academy
+- Fixed the wrong voice line on spell 388942.
+
+@H2@ Boss Cast / Channel System
+- Entire boss cast/channel system has been reworked for the long term. Please report any issues.
+
+@H2@ Encounter Timeline
+- Magisters' Terrace / Gemellus now supports a custom timeline. At the 50% phase transition, Blizzard's native timeline drops all events; EXBoss's timer now papers over that gap.
+
+@H1@ v26.5.7.1626
+
+@H2@ Trash Voice
+- Temporarily disabled voice alerts for Hollow Soulrender (Maisara Caverns), Phalanx Breaker, and Lingering Image (CD timers still display).
+
+@H2@ Timer Bar Names
+- All unrenamed timer bars now display localized names correctly.
+
+@H2@ Voice Alerts
+- Added TTS voice support — Mythic+ only for now (raids not yet supported). Avoid TTS on Magisters' Terrace Boss 3 for now.
+
 @H1@ v26.5.6.0635
 
 @H2@ Timer Bar Names

@@ -225,4 +225,57 @@ ns.Translations.ExBossL = {
     ["导出预设插件片段"]                                            = "Export Preset Pack Snippet",
     ["预设插件片段已生成"]                                          = "Preset pack snippet generated.",
     ["把内容粘贴到模板插件的 Config/PresetPayload.lua 后即可打包。"] = "Paste the contents into the template addon's Config/PresetPayload.lua, then package it.",
+
+    -- 2026-05-15 upstream sync (v26.5.15.0857)
+    --
+    -- GlobalSettingsPage: new Nameplate Icon Strata dropdown — Blizzard
+    -- frame-strata values plus a label. "对话" already covered upstream.
+    ["姓名版图标层级"] = "Nameplate Icon Strata",
+    ["背景"] = "Background",
+    ["低"] = "Low",
+    ["中"] = "Medium",
+    ["高"] = "High",
+    ["全屏"] = "Fullscreen",
+    ["全屏对话"] = "Fullscreen Dialog",
+    ["提示"] = "Tooltip",
+
+    -- BossPage: PrivateAura detail line gains a Voice Category field
+    ["语音分类"] = "Voice Category",
+
+    -- ImportExportPage: split Author-Lua export into "Built-in Author Lua"
+    -- (in-addon preset slot) and "Author Plugin Lua" (separate plugin).
+    ["内置作者Lua"]                          = "Built-in Author Lua",
+    ["内置作者Lua已生成"]                    = "Built-in Author Lua generated.",
+    ["导出内置作者Lua"]                      = "Export Built-in Author Lua",
+    ["作者插件Lua"]                          = "Author Plugin Lua",
+    ["作者插件Lua已生成"]                    = "Author Plugin Lua generated.",
+    ["导出作者插件Lua"]                      = "Export Author Plugin Lua",
+    ["请先勾选一个Boss槽位"]                 = "Select a boss slot first.",
+    ["作者Lua导出一次只能勾选一个Boss槽位"] = "Author Lua export only supports one boss slot at a time.",
+    ["作者Lua导出不包含小怪CD"]              = "Author Lua export does not include Trash CD.",
+    ["作者Lua导出不包含设置页外观"]          = "Author Lua export does not include the settings-page appearance.",
+    ["作者插件Lua不包含小怪CD"]              = "Author Plugin Lua does not include Trash CD.",
+    ["作者插件Lua不包含设置页外观"]          = "Author Plugin Lua does not include the settings-page appearance.",
+    ["把内容直接粘贴到对应作者文件："]       = "Paste the contents directly into the matching author file:",
+    ["把内容直接粘贴到模板插件槽位文件："]   = "Paste the contents directly into the template addon's slot file:",
+
+    -- TargetAlert prototype page (TOC entry currently commented out, but
+    -- the L[] refs still resolve through the proxy if the page is loaded).
+    ["开启"]                                                      = "Enabled",
+    ["法术列表"]                                                  = "Spell List",
+    ["原型阶段先放 1 个法术，后续扩到 15-20 个。"]                = "Prototype phase ships 1 spell; will expand to 15-20.",
+    ["这一版只是原型页，用来确认布局、字段和交互方向。"]          = "This version is a prototype page for confirming layout, fields, and interaction direction.",
+    ["点击左侧法术后，可在此查看详情。"]                          = "Click a spell on the left to view its details here.",
+    ["未填写，触发时使用逻辑层传入文案"]                          = "Empty — the logic layer supplies the text when triggered.",
+    ["预计目标角色：治疗 / 输出"]                                 = "Target roles: Healer / DPS",
+    ["通道"]                                                      = "Channel",
+    ["中央中号"]                                                  = "Center Medium",
+    ["中央大字"]                                                  = "Center Large",
+    ["图标"]                                                      = "Icon",
+    ["中央文字：%s"]                                              = "Center Text: %s",
+    ["中央文字覆盖：%s"]                                          = "Center Text Override: %s",
+    ["施法开始语音：%s"]                                          = "Cast Start Voice: %s",
+    ["圆环：%s"]                                                  = "Ring: %s",
+    ["计时条：%s"]                                                = "Timer Bar: %s",
+    ["图标：%s"]                                                  = "Icon: %s",
 }
