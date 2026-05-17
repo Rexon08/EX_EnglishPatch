@@ -24,6 +24,8 @@ ns.Translations.VoiceLabels = {
     ["准备驱散"]      = "Prep Dispel",
     ["准备AOE(断条)"] = "Prep AoE (kick)",
     ["准备吸球"]      = "Prep Absorb",
+    ["准备跑圈"]      = "Prep Dance",
+    ["准备追人"]      = "Prep Fixate",
     -- Action verbs
     ["去撞分身"]      = "Hit Clone",
     ["坦克尖刺"]      = "Tank Buster",
@@ -64,6 +66,10 @@ ns.Translations.VoiceLabels = {
     ["你是黑色"]      = "You: Black",
     ["小心冲击波"]    = "Watch Shockwave",
     ["小心击飞"]      = "Watch Launch",
+    ["注意击飞"]      = "Watch Knockup",
+    ["坦克击退"]      = "Tank Knockback",
+    ["召唤分身"]      = "Summon Clone",
+    ["集合放圈"]      = "Stack & Drop",
     ["Boss狂暴"]      = "Boss Enrage",
     ["Boss易伤"]      = "Boss Vuln",
     ["易伤爆发"]      = "Vuln Burst",
@@ -199,6 +205,12 @@ ns.Translations.VoiceFileByLabel = {
     ["倒数1"]         = "1.ogg",
     ["无"]            = "Check.ogg",
     ["召唤小怪"]      = "Spawn.ogg",
+    ["准备跑圈"]      = "Dance.ogg",
+    ["准备追人"]      = "Fixate.ogg",
+    ["召唤分身"]      = "Adds.ogg",
+    ["坦克击退"]      = "Knock.ogg",
+    ["注意击飞"]      = "Knock.ogg",
+    ["集合放圈"]      = "Stack.ogg",
 }
 
 -- Tab-button labels the panel-frame fitter should widen. Keys match

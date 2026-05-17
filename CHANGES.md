@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.10
+
+- Absorb the 2026-05-17 upstream sync (EXBoss v26.5.17.0431, ExwindCore / EXBossData / EXBOSS-EXWIND).
+- Cover EXBoss's mid-release localization rework: upstream removed its built-in English locale file entirely, so the EXBoss settings panels (Global Settings, Boss page, Voice / Config, Import / Export, Trash CD, Conditions, Credits, Changelog, etc.) would have regressed to Chinese on stock 12.0.5. v1.0.10 restores English coverage for ~460 of those strings and adds English for ~50 new strings introduced in v26.5.16 and v26.5.17 (Lindormi's Guidance warning, four reset-mode prompts, "Auto Gossip" page, Edit Mode item picker, Countdown digit toggles, voice fallback removal, etc.).
+- Add English aliases for the six new EXBOSS-EXWIND voice labels and route them to the matching Causese English sound files: Prep Dance, Prep Fixate, Summon Clone, Tank Knockback, Watch Knockup, and Stack & Drop.
+
 ## v1.0.9
 
 - Absorb the 2026-05-15 upstream sync (EXBoss v26.5.15.0857, ExwindCore / ExwindTools / EXBossData / EXBOSS-EXWIND).
