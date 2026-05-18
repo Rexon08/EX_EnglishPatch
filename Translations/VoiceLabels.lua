@@ -26,6 +26,7 @@ ns.Translations.VoiceLabels = {
     ["准备吸球"]      = "Prep Absorb",
     ["准备跑圈"]      = "Prep Dance",
     ["准备追人"]      = "Prep Fixate",
+    ["准备抓人"]      = "Prep Grab",
     -- Action verbs
     ["去撞分身"]      = "Hit Clone",
     ["坦克尖刺"]      = "Tank Buster",
@@ -70,6 +71,13 @@ ns.Translations.VoiceLabels = {
     ["坦克击退"]      = "Tank Knockback",
     ["召唤分身"]      = "Summon Clone",
     ["集合放圈"]      = "Stack & Drop",
+    ["唤醒小怪"]      = "Wake Adds",
+    ["控制小怪"]      = "Control Add",
+    ["消除连线"]      = "Clear Link",
+    ["瞄准音符"]      = "Aim Note",
+    ["小心脚下"]      = "Watch Step",
+    ["连续躲圈"]      = "Dodge Repeat",
+    ["靠近BOSS"]      = "Approach Boss",
     ["Boss狂暴"]      = "Boss Enrage",
     ["Boss易伤"]      = "Boss Vuln",
     ["易伤爆发"]      = "Vuln Burst",
@@ -211,6 +219,14 @@ ns.Translations.VoiceFileByLabel = {
     ["坦克击退"]      = "Knock.ogg",
     ["注意击飞"]      = "Knock.ogg",
     ["集合放圈"]      = "Stack.ogg",
+    ["准备抓人"]      = "Grip.ogg",
+    ["唤醒小怪"]      = "Spawn.ogg",
+    ["控制小怪"]      = "CC.ogg",
+    ["消除连线"]      = "Link.ogg",
+    ["瞄准音符"]      = "Targeted.ogg",
+    ["小心脚下"]      = "Feet.ogg",
+    ["连续躲圈"]      = "Dodge.ogg",
+    ["靠近BOSS"]      = "Boss.ogg",
 }
 
 -- Tab-button labels the panel-frame fitter should widen. Keys match

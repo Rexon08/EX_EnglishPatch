@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.11
+
+- Absorb the 2026-05-18 upstream sync (EXBoss v26.5.18.0044, ExwindCore / ExwindTools / EXBossData / EXBOSS-EXWIND).
+- Translate the two new strings on EXBoss's Maisara Caverns "Trash Shield Panel" (Trash_248690_AbsorbBar): the Edit-Mode anchor label and the per-bar "Absorb Shield" caption.
+- Add English aliases for the eight new EXBOSS-EXWIND voice labels and route them to matching Causese English sound files: Prep Grab, Wake Adds, Watch Step, Control Add, Clear Link, Aim Note, Dodge Repeat, and Approach Boss.
+
 ## v1.0.10
 
 - Absorb the 2026-05-17 upstream sync (EXBoss v26.5.17.0431, ExwindCore / EXBossData / EXBOSS-EXWIND).
