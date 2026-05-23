@@ -827,4 +827,68 @@ ns.Translations.ExBossL = {
         "This is a non-English voice pack.\nConfirming stops the automatic force-switch on English clients.",
     ["隐藏 X 秒以上的计时条：只在最后 X 秒显示小怪计时条。\n技能冷却结束后 X 秒隐藏：条子到点后若怪物尚未成功施法，会停在 0 继续保留；成功施法后才进入下一轮 CD，或超过额外 X 秒后隐藏。\n隐藏NPCID只隐藏姓名版上方的识别文字，不影响内置CD图标。\n姓名版图标参数控制图标本体；姓名版倒数字体参数控制图标上的数字大小、颜色、字体、描边和偏移。"] =
         "\"Hide bars over X sec\": Trash timer bars are only shown during the final X seconds.\n\"Hide X sec after cooldown\": once the bar reaches zero, if the mob has not yet cast successfully, the bar stays at 0; a successful cast starts the next cooldown, otherwise the bar hides after an additional X seconds.\n\"Hide NPCID\" only hides the identifier text above the nameplate; the built-in CD icon is unaffected.\n\"Nameplate Icon\" controls the icon itself; \"Nameplate Countdown Font\" controls the digit size, color, font, outline, and offset on the icon.",
+
+    -- v26.5.22 sync — Targeted Alert (TargetAlertPage)
+    ["被点名提示"]                    = "Targeted Alert",
+    ["被点名提示 (TargetAlert)"]      = "Targeted Alert (TargetAlert)",
+    ["|cffff120aDPS职责下开启|r"]     = "|cffff120aEnable for DPS Role|r",
+    ["|cff02ff0a治疗职责下开启|r"]    = "|cff02ff0aEnable for Healer Role|r",
+    ["图标尺寸"]                      = "Icon Size",
+    ["时间文本设置"]                  = "Time Text Settings",
+
+    -- v26.5.22 sync — GeneralOverviewPage timeline-style + raid-only countdown
+    ["时间轴样式选择"]                                                    = "Timeline Style",
+    ["(该设置只在团本生效,只能整体启用或是禁用,无法过滤)"]                = "(Only applies in raids; enabled or disabled as a whole, no filtering.)",
+    ["注意:声音大小请勿在此修改,若要调整声音大小请在ESC的设置面板修改"]   = "Note: do not change sound volume here. Adjust it in the ESC settings panel.",
+
+    -- v26.5.22 sync — HomePage locale-force dropdown (extra locales)
+    ["强制 deDE"] = "Force deDE",
+    ["强制 esES"] = "Force esES",
+    ["强制 esMX"] = "Force esMX",
+    ["强制 frFR"] = "Force frFR",
+    ["强制 itIT"] = "Force itIT",
+    ["强制 koKR"] = "Force koKR",
+    ["强制 ptBR"] = "Force ptBR",
+    ["强制 ruRU"] = "Force ruRU",
+    ["强制 zhTW"] = "Force zhTW",
+
+    -- v26.5.22 sync — Pull countdown (PullCountdown)
+    ["为开怪倒数 播放语音"] = "Play voice for pull countdown",
+    ["开怪倒数功能未就绪"]  = "Pull countdown feature is not ready.",
+
+    -- v26.5.22 sync — Maisara Caverns shield panels (GlobalSettingsPage)
+    ["迈萨拉洞窟 - 小怪护盾面板"] = "Maisara Caverns - Trash Shield Panel",
+    ["迈萨拉洞窟 - 沃达扎护盾条"] = "Maisara Caverns - Vordaza Shield Bar",
+    ["最多显示几个"]              = "Max bars to show",
+    ["护盾"]                      = "Shield",
+    ["沃达扎护盾条"]              = "Vordaza Shield Bar",
+    ["额外圆环"]                  = "Extra Ring",
+    ["用于调整迈萨拉洞窟阴冷散兵护盾面板的位置。点击后进入 EXBoss 编辑模式，可直接拖动绿色锚点。"] =
+        "Adjusts the position of the Grim Skirmisher shield panel in Maisara Caverns. Clicking opens EXBoss Edit Mode; drag the green anchor to move it.",
+    ["用于调整迈萨拉洞窟沃达扎护盾条的位置。点击后进入 EXBoss 编辑模式，可直接拖动绿色锚点。"] =
+        "Adjusts the position of the Vordaza shield bar in Maisara Caverns. Clicking opens EXBoss Edit Mode; drag the green anchor to move it.",
+
+    -- v26.5.22 sync — VoicePackPage "Trash Author Preset" flow
+    ["小怪作者方案"]                  = "Trash Author Preset",
+    ["当前方案"]                      = "Current Preset",
+    ["导入覆盖"]                      = "Import (Overwrite)",
+    ["从作者插件导入整套小怪配置；这是一次性覆盖，不保留回退。"] =
+        "Import the full trash config from the author addon. This is a one-time overwrite with no rollback.",
+    ["当前没有可用的小怪作者方案"]    = "No trash author preset available.",
+    ["当前没有可用的小怪作者方案，请先在作者插件的 Config/TrashConfig.lua 粘贴“小怪作者Lua”。"] =
+        "No trash author preset available. Paste the \"Trash Author Lua\" into the author addon's Config/TrashConfig.lua first.",
+    ["请先选择小怪作者方案"]          = "Select a trash author preset first.",
+    ["小怪作者方案导入接口未就绪"]    = "Trash author preset import interface is not ready.",
+    ["导入作者小怪配置失败："]        = "Failed to import author trash config: ",
+    ["作者小怪配置已导入（覆盖当前本地配置）"] = "Author trash config imported (replaces the current local config).",
+    ["确认导入小怪作者方案：%s ？\n这会直接覆盖当前本地小怪配置。"] =
+        "Confirm import of trash author preset: %s?\nThis directly overwrites the current local trash config.",
+
+    -- v26.5.22 sync — ImportExportPage "Trash Author Lua" export
+    ["小怪作者Lua"]                       = "Trash Author Lua",
+    ["导出小怪作者Lua"]                   = "Export Trash Author Lua",
+    ["小怪作者Lua已生成"]                 = "Trash Author Lua generated.",
+    ["小怪作者Lua导出不包含Boss槽位"]     = "Trash Author Lua export does not include boss slots.",
+    ["小怪作者Lua导出不包含设置页外观"]   = "Trash Author Lua export does not include settings appearance.",
+    ["请先勾选小怪CD设置"]                = "Tick the Trash CD setting first.",
 }

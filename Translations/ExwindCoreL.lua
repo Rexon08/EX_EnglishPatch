@@ -170,6 +170,17 @@ ns.Translations.ExwindCoreL = {
     ["提示大小"]         = "Indicator Size",
     ["提示X偏移"]        = "Indicator X Offset",
     ["提示Y偏移"]        = "Indicator Y Offset",
+    ["显示模式"]         = "Display Mode",
+    ["进度条模式"]       = "Progress Bar",
+    ["图标模式"]         = "Icon Mode",
+    ["图标尺寸"]         = "Icon Size",
+    ["秒数字号"]         = "Seconds Font Size",
+
+    -- ExTools.TransformTimer additions (new layout fields v26.5.22)
+    ["显示次数"] = "Show Count",
+    ["次数文字"] = "Count Text",
+    ["监控玩家施放 1217605，并通过 473662 图标变化判断变身开始与结束。额外显示本次变身内是否施放过 1221150。结束后停表，不隐藏。"]
+        = "Watches casts of spell 1217605 and uses icon 473662 changes to detect transform start and end. Also shows whether spell 1221150 was cast during this transform. Stops the timer on end without hiding.",
 
     -- ExTools.PveKeystoneInfo
     ["在 PVEFrame 上显示玩家与队友钥石信息。"] = "Shows player and party keystone info on the PVE frame.",

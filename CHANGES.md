@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.12
+
+- Absorb the 2026-05-23 upstream sync (EXBoss v26.5.22.0038, ExwindCore / ExwindTools / EXBossData).
+- Translate the new "Targeted Alert" settings page (DPS and Healer enable toggles, icon size, time text settings).
+- Translate the new Pull Countdown voice option and its "feature not ready" message.
+- Translate the new Maisara Caverns shield panels in Global Settings: the Grim Skirmisher trash panel and the separated Vordaza shield bar, with their position-edit descriptions.
+- Translate the "Trash Author Preset" import flow on the Voice Pack page (dropdown label, import button, status messages, confirm dialog) and the matching "Export Trash Author Lua" button on Import / Export.
+- Translate the extra locale-force entries on Home (Force zhTW / koKR / deDE / esES / esMX / itIT / ptBR / frFR / ruRU).
+- Translate the new Timeline-Style dropdown and the raid-only countdown description on General Overview.
+- Translate the new "Show Count" and "Count Text" options on the Devourer Transform Timer panel.
+- Translate the new "Icon Mode" display option and its size / seconds-font sliders on the M+ Cast monitor.
+
 ## v1.0.11
 
 - Absorb the 2026-05-18 upstream sync (EXBoss v26.5.18.0044, ExwindCore / ExwindTools / EXBossData / EXBOSS-EXWIND).
