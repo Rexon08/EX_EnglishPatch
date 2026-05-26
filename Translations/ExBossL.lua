@@ -891,4 +891,31 @@ ns.Translations.ExBossL = {
     ["小怪作者Lua导出不包含Boss槽位"]     = "Trash Author Lua export does not include boss slots.",
     ["小怪作者Lua导出不包含设置页外观"]   = "Trash Author Lua export does not include settings appearance.",
     ["请先勾选小怪CD设置"]                = "Tick the Trash CD setting first.",
+
+    -- v26.5.24 sync — Extra Shield Bar (ExtraShieldBarPage / EditMode / ExtraShieldBar)
+    ["额外护盾条"]       = "Extra Shield Bar",
+    ["额外护盾条设置"]   = "Extra Shield Bar Settings",
+    ["供首领/副本额外功能复用的单体护盾监控条。"] =
+        "A single-target shield monitor bar reused by boss and dungeon extra features.",
+    ["显示数值"]         = "Show Value",
+    ["数值文本"]         = "Value Text",
+    ["测试护盾(3秒)"]    = "Test Shield (3s)",
+    ["小怪护盾监控"]     = "Trash Shield Monitor",
+
+    -- v26.5.24 sync — Nearby Mob Cast alert (migrated from ExwindTools); 大米 = M+
+    ["大米怪物施法"]     = "Mythic Mob Casts",
+
+    -- v26.5.24 sync — PanelFrame "About" tab
+    ["关于插件"]         = "About",
+
+    -- v26.5.24 sync — Auto Gossip (GeneralOverviewPage). NPX is new this build;
+    -- AA/MC/POS siblings ship in upstream ExwindCore enUS.
+    ["[大秘境] 自动对话节点(NPX)BUFF"] = "[Mythic+] Auto Talk Nexus-Point (NPX) Buff",
+
+    -- v26.5.24 sync — HomePage feedback / credits
+    ["直播间"]           = "Livestream",
+    ["测试协助"]         = "Testing Support",
+    ["额外感谢"]         = "Special Thanks",
+    ["感谢以下贡献者提供各语言翻译。"] = "Thanks to the contributors below for the language translations.",
+    ["如有遗漏请提醒我"] = "Please let me know if anyone is missing.",
 }

@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.13
+
+- Absorb the 2026-05-24 upstream sync (EXBoss v26.5.24.1035, ExwindCore and EXBOSS-EXWIND).
+- Translate the new Extra Shield Bar feature: its settings page and Edit Mode labels.
+- Translate the new "Mythic Mob Casts" nearby-cast monitor, the "About" tab, and the Nexus-Point (NPX) auto-gossip toggle.
+- Translate the new Home page entries (Livestream link, Testing Support / Special Thanks credits, localization-contributors note).
+- Add English labels for the 84 reworked EXBOSS-EXWIND voice cues and route most to bundled English audio.
+
 ## v1.0.12
 
 - Absorb the 2026-05-23 upstream sync (EXBoss v26.5.22.0038, ExwindCore / ExwindTools / EXBossData).
