@@ -918,4 +918,45 @@ ns.Translations.ExBossL = {
     ["额外感谢"]         = "Special Thanks",
     ["感谢以下贡献者提供各语言翻译。"] = "Thanks to the contributors below for the language translations.",
     ["如有遗漏请提醒我"] = "Please let me know if anyone is missing.",
+
+    -- v1.0.14 sync — PanelFrame "Tools" tab (new ToolsPage)
+    ["小工具"] = "Tools",
+
+    -- v1.0.14 sync — TargetAlertPage voice settings
+    ["启用单点音效"]   = "Enable Single-Target Sound",
+    ["单点名LSM音效"]  = "Single-Target LSM Sound",
+    ["启用双点音效"]   = "Enable Multi-Target Sound",
+    ["多点名LSM音效"]  = "Multi-Target LSM Sound",
+    ["检测延迟(秒)"]   = "Detect Delay (sec)",
+
+    -- v1.0.14 sync — ImportExportPage "Built-in Author" export flow
+    ["内置作者"]                       = "Built-in Author",
+    ["选择内置作者"]                   = "Select Built-in Author",
+    ["选择要生成到哪个内置作者文件。"] = "Choose which built-in author file to generate into.",
+    ["注意：这是给内置作者使用的选项。"] = "Note: this option is for built-in authors.",
+    ["请先勾选一个导出目标"]           = "Tick an export target first.",
+    ["导出Lua一次只能选择一个目标"]    = "Export Lua can target only one item at a time.",
+    ["当前没有可用的内置作者"]         = "No built-in author available.",
+
+    -- v1.0.14 sync — VoicePackPage "Settings Preset" import flow (综合设置 = combined settings)
+    ["综合设置方案"]                   = "Settings Preset",
+    ["从作者插件导入整套综合设置；这是一次性覆盖，不保留回退。"] =
+        "Import the full settings from the author addon. This is a one-time overwrite with no rollback.",
+    ["当前没有可用的综合设置方案"]     = "No settings preset available.",
+    ["当前没有可用的综合设置方案，请先在作者插件的 Presets/SettingsPage.lua 粘贴“导出Lua”。"] =
+        "No settings preset available. Paste the \"Export Lua\" into the author addon's Presets/SettingsPage.lua first.",
+    ["请先选择综合设置方案"]           = "Select a settings preset first.",
+    ["综合设置方案数据无效"]           = "Settings preset data is invalid.",
+    ["综合设置方案导入接口未就绪"]     = "Settings preset import interface is not ready.",
+    ["导入综合设置失败："]             = "Failed to import settings: ",
+    ["综合设置已导入（覆盖当前本地设置）"] = "Settings imported (replaces the current local settings).",
+    ["确认导入综合设置方案：%s ？\n这会直接覆盖当前本地综合设置。"] =
+        "Confirm import of settings preset: %s?\nThis directly overwrites the current local settings.",
+
+    -- v1.0.14 sync — VoicePackPage trash-preset path moved to Presets/TrashConfig.lua
+    ["当前没有可用的小怪作者方案，请先在作者插件的 Presets/TrashConfig.lua 粘贴“导出Lua”。"] =
+        "No trash author preset available. Paste the \"Export Lua\" into the author addon's Presets/TrashConfig.lua first.",
+
+    -- v1.0.14 sync — Crawth (Algeth'ar Academy) center-screen activation countdown
+    ["BOSS激活"] = "Boss Activated",
 }

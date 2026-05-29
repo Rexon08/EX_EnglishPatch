@@ -263,4 +263,26 @@ ns.Translations.ExwindCoreL = {
     ["左侧图标数量"] = "Left Icon Count",
     ["右侧图标槽位"] = "Right Icon Slots",
     ["右侧图标数量"] = "Right Icon Count",
+
+    -- ExTools.PlayerShield (new module — on-screen total-shield monitor)
+    ["玩家护盾量"] = "Player Shield",
+    ["在屏幕上显示玩家当前总护盾量，支持显示数值或占总血量百分比。"]
+        = "Shows your current total shield amount on screen, as a number or a percentage of your max health.",
+    ["显示玩家当前总护盾量，可切换为显示占总血量的百分比。"]
+        = "Shows your current total shield amount; toggle to display it as a percentage of your max health.",
+    ["零护盾隐藏"]     = "Hide at Zero Shield",
+    ["缩写数值"]       = "Abbreviate Value",
+    ["小数位"]         = "Decimal Places",
+    ["护盾文字样式"]   = "Shield Text Style",
+    ["保密"]           = "Secret",
+    -- displayMode dropdown options (raw inline items, repainted via DisplayText)
+    ["数值"]           = "Value",
+    ["总血量百分比"]   = "Max Health %",
+
+    -- ExwindGUI searchable-dropdown empty state
+    ["无匹配结果"] = "No matching results",
+
+    -- ExTools.TransformTimer — description reworked to track buff 1217607
+    ["直接监控玩家身上的 1217607：虚空变形 Buff。Buff 出现开始计时，Buff 消失立即停表。额外显示本次变身内是否施放过 1221150。结束后停表，不隐藏。"]
+        = "Directly monitors the 1217607 (Void Transformation) buff on you. The timer starts when the buff appears and stops the moment it disappears. Also shows whether spell 1221150 was cast during this transform. Stops the timer on end without hiding.",
 }

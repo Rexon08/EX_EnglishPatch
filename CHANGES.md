@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.14
+
+- Absorb the latest upstream sync (ExwindCore, ExwindTools, EXBoss, EXBossData).
+- Translate the new "Player Shield" module: its on-screen shield monitor and all of its settings (display mode, decimal places, abbreviation, hide-at-zero, text style).
+- Translate the new "Tools" tab and the Targeted Alert voice settings (single/multi-target sound toggles, sound pickers, detection delay).
+- Translate the new Settings Preset and Built-in Author import/export flows on the Voice Pack and Import / Export pages.
+- Translate the updated Devourer Transform Timer description and the boss-activation alert in Algeth'ar Academy.
+
 ## v1.0.13
 
 - Absorb the 2026-05-24 upstream sync (EXBoss v26.5.24.1035, ExwindCore and EXBOSS-EXWIND).
