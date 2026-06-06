@@ -959,4 +959,21 @@ ns.Translations.ExBossL = {
 
     -- v1.0.14 sync — Crawth (Algeth'ar Academy) center-screen activation countdown
     ["BOSS激活"] = "Boss Activated",
+
+    -- 2026-06-06 upstream sync — EXBoss IconAlert settings page (new generic
+    -- icon container; siblings 图标/启用/增长方向/图标设置 covered upstream)
+    ["显示文本"] = "Show Text",
+    ["通用图标容器，由其他模块通过 API 推入显示条目。可选发光，并支持多个图标向左/右/上/下增长。"] =
+        "Generic icon container; other modules push display entries to it via API. Optional glow, with icons able to grow left / right / up / down.",
+
+    -- 2026-06-06 upstream sync — EXBoss HomePage redesign cards (not covered by
+    -- upstream EXBOSS-Locale enUS; 中文/英文 URL labels left as-is on purpose)
+    ["语音包列表"]                     = "Voice Pack List",
+    ["将你的配置/语音打包成插件"]      = "Package your settings / voice pack into an addon.",
+    ["如果你觉得插件不错，可以小额赞助"] = "If you like the addon, consider a small donation",
+    ["复制或选中下面联系方式即可。"]    = "Just copy or select the contact info below.",
+    ["复制或选中下面链接即可。"]        = "Just copy or select the link below.",
+    ["如果你想参与本地化或是反馈，可以在："] = "Want to help localize or give feedback? Reach us at:",
+    ["首页依赖 ExwindTools.UI 与 ExwindGrid，当前未就绪。请确认 ExwindCore 已正确加载后重开面板。"] =
+        "Home needs ExwindTools.UI and ExwindGrid. Reload after ExwindCore is ready.",
 }

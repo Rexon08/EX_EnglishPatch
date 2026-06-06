@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.0.15
+
+- Absorb the latest upstream sync (ExwindCore, ExwindTools, EXBoss, EXBossData).
+- Translate the new module-browser search box (search field and the "no matching modules" message).
+- Fix the new "Player Heal Absorb" module description, which showed in Chinese on the module list.
+- Translate the new Icon Alert settings page (Show Text option and the icon-container description).
+- Translate the redesigned EXBoss Home page cards (voice-pack list, donation prompt, config-packaging note, feedback and localization links).
+- Translate the Instance Notes and Chat Channel Bar panel headers.
+
 ## v1.0.14
 
 - Absorb the latest upstream sync (ExwindCore, ExwindTools, EXBoss, EXBossData).

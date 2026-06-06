@@ -285,4 +285,17 @@ ns.Translations.ExwindCoreL = {
     -- ExTools.TransformTimer — description reworked to track buff 1217607
     ["直接监控玩家身上的 1217607：虚空变形 Buff。Buff 出现开始计时，Buff 消失立即停表。额外显示本次变身内是否施放过 1221150。结束后停表，不隐藏。"]
         = "Directly monitors the 1217607 (Void Transformation) buff on you. The timer starts when the buff appears and stops the moment it disappears. Also shows whether spell 1221150 was cast during this transform. Stops the timer on end without hiding.",
+
+    -- 2026-06-06 upstream sync — ExwindToolsUI module-browser sidebar search
+    ["搜索模块..."]    = "Search modules...",
+    ["没有匹配的模块"] = "No matching modules",
+    -- ExTools.InstanceNote / ExTools.ChatChannelBar config-panel headers
+    -- (sibling descriptions already covered by upstream ExwindCore enUS)
+    ["副本笔记备注"]   = "Instance Notes",
+    ["聊天频道快捷栏"] = "Chat Channel Bar",
+    -- ExTools.PlayerHealAbsorb — module Name is L[]-wrapped (covered by
+    -- upstream enUS) but Desc ships as a raw zh literal in ExwindTools.ModuleList,
+    -- so the locale store can't reach it; repainted via Patches/ModuleListMeta.
+    ["在屏幕上显示玩家当前总治疗吸收量。"]
+        = "Shows your current total heal absorb on screen.",
 }
