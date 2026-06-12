@@ -79,14 +79,36 @@ function ns.UI.WatchSetText(target, translateFn, opts)
     target[markerField] = true
 
     local suppress = false
+    local pendingValue = nil
 
-    local function emit(self, value)
+    local function applyNow(self, value)
         suppress = true
-        ns.RunSafe(runSafeLabel, function()
-            self:SetText(value)
-            if afterApply then afterApply(self, value) end
-        end)
+        self:SetText(value)
+        if afterApply then afterApply(self, value) end
         suppress = false
+    end
+
+    -- In combat only the newest value matters: keep one queued flush per
+    -- target instead of one closure per SetText — combat-time panels can
+    -- repaint every mechanic tick for a whole fight.
+    local function emit(self, value)
+        if ns.InCombat and ns.InCombat() then
+            local alreadyQueued = pendingValue ~= nil
+            pendingValue = value
+            if alreadyQueued then return end
+            ns.RunSafe(runSafeLabel, function()
+                local v = pendingValue
+                pendingValue = nil
+                if v ~= nil then applyNow(self, v) end
+            end)
+            return
+        end
+        -- Void any still-queued combat value so a flush that runs after
+        -- this immediate write can't repaint stale text over it.
+        pendingValue = nil
+        ns.RunSafe(runSafeLabel, function()
+            applyNow(self, value)
+        end)
     end
 
     if type(hooksecurefunc) == "function" then

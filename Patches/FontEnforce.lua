@@ -23,9 +23,12 @@ local _, ns = ...
 
 local MAX_DEPTH = 14   -- generous; Boss panel nests ~8 deep
 
--- Per-frame tag so we don't re-walk regions we already touched.
--- Stored as a key on the live frame (FontStrings have no GetUserData).
-local TAG = "_eb_fontPainted"
+-- Per-frame walk-generation tag so one walk doesn't revisit a frame, while
+-- the next walk (tab switch, content refresh) repaints everything without
+-- a separate clearing pass. Stored as a key on the live frame (FontStrings
+-- have no GetUserData).
+local TAG = "_eb_fontPaintGen"
+local _paintGen = 0
 -- Per-region cache of the upstream font path captured on first paint.
 -- Used by the CJK fallback pass to restore the original face on regions
 -- whose text could not be translated.
@@ -106,17 +109,22 @@ local function FallbackRegion(region)
     pcall(region.SetFont, region, origPath, size, flags)
 end
 
+-- Named collectors so each pcall reuses one function value instead of
+-- allocating a closure per frame per walk.
+local function CollectRegions(frame) return { frame:GetRegions() } end
+local function CollectChildren(frame) return { frame:GetChildren() } end
+
 local function Walk(frame, newFont, depth)
     if not frame or depth > MAX_DEPTH then return end
     if type(frame) ~= "table" then return end
-    if rawget(frame, TAG) then return end
-    rawset(frame, TAG, true)
+    if rawget(frame, TAG) == _paintGen then return end
+    rawset(frame, TAG, _paintGen)
 
     -- FontString or EditBox themselves
     PaintRegion(frame, newFont)
 
     if type(frame.GetRegions) == "function" then
-        local ok, regions = pcall(function() return { frame:GetRegions() } end)
+        local ok, regions = pcall(CollectRegions, frame)
         if ok and regions then
             for i = 1, #regions do
                 PaintRegion(regions[i], newFont)
@@ -125,36 +133,10 @@ local function Walk(frame, newFont, depth)
     end
 
     if type(frame.GetChildren) == "function" then
-        local ok, children = pcall(function() return { frame:GetChildren() } end)
+        local ok, children = pcall(CollectChildren, frame)
         if ok and children then
             for i = 1, #children do
                 Walk(children[i], newFont, depth + 1)
-            end
-        end
-    end
-end
-
--- Walks freshly each call; `TAG` persists per-region inside one walk root,
--- but we clear at the entrypoint so re-builds (tab switches, content
--- refreshes) get re-painted.
-local function ClearTags(frame, depth)
-    if not frame or depth > MAX_DEPTH then return end
-    if type(frame) ~= "table" then return end
-    if rawget(frame, TAG) then rawset(frame, TAG, nil) end
-    if type(frame.GetRegions) == "function" then
-        local ok, regions = pcall(function() return { frame:GetRegions() } end)
-        if ok and regions then
-            for i = 1, #regions do
-                local r = regions[i]
-                if type(r) == "table" and rawget(r, TAG) then rawset(r, TAG, nil) end
-            end
-        end
-    end
-    if type(frame.GetChildren) == "function" then
-        local ok, children = pcall(function() return { frame:GetChildren() } end)
-        if ok and children then
-            for i = 1, #children do
-                ClearTags(children[i], depth + 1)
             end
         end
     end
@@ -167,7 +149,7 @@ local function FallbackWalk(frame, depth)
     FallbackRegion(frame)
 
     if type(frame.GetRegions) == "function" then
-        local ok, regions = pcall(function() return { frame:GetRegions() } end)
+        local ok, regions = pcall(CollectRegions, frame)
         if ok and regions then
             for i = 1, #regions do
                 FallbackRegion(regions[i])
@@ -176,7 +158,7 @@ local function FallbackWalk(frame, depth)
     end
 
     if type(frame.GetChildren) == "function" then
-        local ok, children = pcall(function() return { frame:GetChildren() } end)
+        local ok, children = pcall(CollectChildren, frame)
         if ok and children then
             for i = 1, #children do
                 FallbackWalk(children[i], depth + 1)
@@ -207,7 +189,7 @@ local function EnforceIn(rootFrame)
     if type(rootFrame) ~= "table" then return end
     local newFont = GetTargetFont()
     if not newFont then return end
-    ClearTags(rootFrame, 0)
+    _paintGen = _paintGen + 1
     Walk(rootFrame, newFont, 0)
     ScheduleFallback(rootFrame)
 end

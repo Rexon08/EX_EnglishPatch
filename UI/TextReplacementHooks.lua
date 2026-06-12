@@ -155,6 +155,16 @@ local function TranslateKnownRoots()
     end
 end
 
+local function AnyKnownRootVisible()
+    local roots = CollectKnownRoots()
+    for i = 1, #roots do
+        local shown = SafeCall(roots[i], "IsVisible")
+        if shown == nil then shown = SafeCall(roots[i], "IsShown") end
+        if shown == true then return true end
+    end
+    return false
+end
+
 -- Per-frame debounce: a single panel show fires Show + Toggle + SetTab +
 -- page Render in quick succession; coalesce into one walk.
 local _knownPending = nil
@@ -397,7 +407,11 @@ ns.OnPlayerEnteringWorld(function(firstPEW)
     if firstPEW then InstallHooks() end
 end)
 ns.OnRegenEnabled(function()
-    TranslateKnownRootsLater("postCombat")
+    -- Hidden panels are re-walked by their Show/Toggle/Render hooks on next
+    -- open; only a panel left visible through combat needs the catch-up walk.
+    if AnyKnownRootVisible() then
+        TranslateKnownRootsLater("postCombat")
+    end
 end)
 
 ns.UI.TextReplacementHooks = {

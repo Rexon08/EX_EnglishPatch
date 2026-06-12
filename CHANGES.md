@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.17
+
+- Performance pass: lower memory use and less combat-time garbage.
+- Translation caches are now capped and no longer grow for the duration of a session.
+- Center-screen countdown and health-threshold alerts no longer allocate on every display tick.
+- Text repaints deferred by combat now coalesce into one update per label instead of one per change.
+- Settings-panel font enforcement does one less full panel walk per open and tab switch.
+
 ## v1.0.16
 
 - Absorb the latest upstream sync (EXBoss Wago integration, Trinket Monitor, Interrupt Tracker, Dungeon Extras page; MDT module removed upstream).

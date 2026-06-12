@@ -163,6 +163,24 @@ end
 
 local _displayCache = nil
 local _displayResultCache = nil
+local _displayResultCount = 0
+
+-- Memo entries live for the whole session; without a cap, dynamic
+-- high-byte strings (chat lines, zh player names) grow the table without
+-- bound. Wiping is cheap — entries re-memoize on demand.
+local MAX_RESULT_CACHE = 4000
+
+local function MemoResult(text, value)
+    if not _displayResultCache then return end
+    if _displayResultCount >= MAX_RESULT_CACHE then
+        _displayResultCache = {}
+        _displayResultCount = 0
+    end
+    if _displayResultCache[text] == nil then
+        _displayResultCount = _displayResultCount + 1
+    end
+    _displayResultCache[text] = value
+end
 
 local function MergeMap(lookup, map)
     if type(map) ~= "table" then return end
@@ -193,6 +211,7 @@ local function BuildDisplayCache()
 
     _displayCache = { keys = keys, lookup = lookup }
     _displayResultCache = {}
+    _displayResultCount = 0
     return _displayCache
 end
 
@@ -201,6 +220,7 @@ end
 function R.InvalidateDisplayCache()
     _displayCache = nil
     _displayResultCache = nil
+    _displayResultCount = 0
 end
 
 -- All zh keys contain a byte >= 0x80, so pure-ASCII text never matches.
@@ -214,6 +234,10 @@ end
 function R.DisplayText(text)
     if type(text) ~= "string" or text == "" then return text, false end
 
+    -- Pure-ASCII text can never match a zh key; the scan is cheaper than
+    -- a permanent memo entry (timer/number strings are mostly unique).
+    if not HasHighByte(text) then return text, false end
+
     local resultCache = _displayResultCache
     if resultCache then
         local memo = resultCache[text]
@@ -221,17 +245,11 @@ function R.DisplayText(text)
         if memo ~= nil then return memo, true end
     end
 
-    if not HasHighByte(text) then
-        if resultCache then resultCache[text] = false end
-        return text, false
-    end
-
     local cache = _displayCache or BuildDisplayCache()
-    resultCache = _displayResultCache
 
     local exact = cache.lookup[text]
     if type(exact) == "string" and exact ~= "" and exact ~= text then
-        resultCache[text] = exact
+        MemoResult(text, exact)
         return exact, true
     end
 
@@ -251,10 +269,10 @@ function R.DisplayText(text)
     end
 
     if changed then
-        resultCache[text] = out
+        MemoResult(text, out)
         return out, true
     end
-    resultCache[text] = false
+    MemoResult(text, false)
     return text, false
 end
 

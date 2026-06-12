@@ -8,28 +8,32 @@
 
 local _, ns = ...
 
+-- Hoisted gsub callbacks: ProcessDamageText runs per damage-text repaint,
+-- so per-call closures would be combat-time garbage.
+local function FormatWan(n)
+    local v = tonumber(n)
+    if not v then return n .. "W" end
+    return tostring(v * 10) .. "K"
+end
+
+local function FormatYi(n)
+    local v = tonumber(n)
+    if not v then return n .. "B" end
+    local m = v * 100
+    if m >= 1000 then
+        local b = m / 1000
+        if b == math.floor(b) then return string.format("%dB", b) end
+        return string.format("%.2fB", b)
+    end
+    if m == math.floor(m) then return string.format("%dM", m) end
+    return string.format("%.1fM", m)
+end
+
 local function ConvertWesternUnits(text)
     if type(text) ~= "string" or text == "" then return text end
-
-    text = text:gsub("(%d+)W", function(n)
-        local v = tonumber(n)
-        if not v then return n .. "W" end
-        return tostring(v * 10) .. "K"
-    end)
-
-    text = text:gsub("([%d%.]+)B", function(n)
-        local v = tonumber(n)
-        if not v then return n .. "B" end
-        local m = v * 100
-        if m >= 1000 then
-            local b = m / 1000
-            if b == math.floor(b) then return string.format("%dB", b) end
-            return string.format("%.2fB", b)
-        end
-        if m == math.floor(m) then return string.format("%dM", m) end
-        return string.format("%.1fM", m)
-    end)
-
+    if not text:find("[WB]") then return text end
+    text = text:gsub("(%d+)W", FormatWan)
+    text = text:gsub("([%d%.]+)B", FormatYi)
     return text
 end
 
