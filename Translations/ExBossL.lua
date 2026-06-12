@@ -976,4 +976,8 @@ ns.Translations.ExBossL = {
     ["如果你想参与本地化或是反馈，可以在："] = "Want to help localize or give feedback? Reach us at:",
     ["首页依赖 ExwindTools.UI 与 ExwindGrid，当前未就绪。请确认 ExwindCore 已正确加载后重开面板。"] =
         "Home needs ExwindTools.UI and ExwindGrid. Reload after ExwindCore is ready.",
+
+    -- 2026-06-12 upstream sync — DungeonExtraPage trash-shield-bar toggle
+    -- (page siblings all ship in upstream EXBOSS-Locale enUS)
+    ["启用小怪护盾条模块"] = "Enable Trash Shield Bar Module",
 }

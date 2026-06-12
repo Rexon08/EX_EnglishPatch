@@ -5,10 +5,16 @@
 -- that field directly without routing through L[...]. With our font
 -- enforcement, untranslated zh in this string renders as boxes.
 --
--- Maintenance: when a new upstream version adds a section, prepend a
--- new @H1@ block at the top of the relevant constant. Older sections
--- roll off naturally — players who need deep history can read the
--- upstream metadata file.
+-- Since 2026-06 the EXBoss changelog ships bilingual: lines tagged
+-- @CN@ / @EN@, filtered per locale by ExBoss_Changelog.lua. Tagged
+-- content is left untouched — upstream's own English is always newer
+-- than a curated copy. The constants below remain as fallback for
+-- untagged (zh-only) content, which ExwindTools still ships.
+--
+-- Maintenance: when a new upstream version adds an untagged section,
+-- prepend a new @H1@ block at the top of the relevant constant. Older
+-- sections roll off naturally — players who need deep history can read
+-- the upstream metadata file.
 
 local _, ns = ...
 
@@ -274,29 +280,35 @@ local EXWINDTOOLS_CHANGELOG_EN = [[
 
 local function ApplyChangelog(globalName, englishContent)
     local meta = rawget(_G, globalName)
-    if type(meta) ~= "table" then return false end
+    if type(meta) ~= "table" then return nil end
     local cl = meta.changelog
-    if type(cl) ~= "table" then return false end
-    if type(cl.content) ~= "string" or cl.content == "" then return false end
+    if type(cl) ~= "table" then return nil end
+    if type(cl.content) ~= "string" or cl.content == "" then return nil end
+
+    -- Locale-tagged bilingual content: the upstream renderer already
+    -- serves English clients, and it is newer than any curated copy.
+    if cl.content:find("@EN@", 1, true) then return "native-en" end
 
     StashOriginal(cl, "content")
     cl.content = englishContent
-    return true
+    return "replaced"
 end
 
 local function PatchExBossChangelog()
     if ns.IsMarked("ChangelogContent", "ExBoss") then return end
-    if ApplyChangelog("ExBoss_MetaData", EXBOSS_CHANGELOG_EN) then
+    local result = ApplyChangelog("ExBoss_MetaData", EXBOSS_CHANGELOG_EN)
+    if result then
         ns.Mark("ChangelogContent", "ExBoss")
-        ns.Log("ChangelogContent: ExBoss_MetaData.changelog.content -> EN")
+        ns.Log("ChangelogContent: ExBoss_MetaData.changelog " .. result)
     end
 end
 
 local function PatchExwindToolsChangelog()
     if ns.IsMarked("ChangelogContent", "ExwindTools") then return end
-    if ApplyChangelog("ExwindTools_MetaData", EXWINDTOOLS_CHANGELOG_EN) then
+    local result = ApplyChangelog("ExwindTools_MetaData", EXWINDTOOLS_CHANGELOG_EN)
+    if result then
         ns.Mark("ChangelogContent", "ExwindTools")
-        ns.Log("ChangelogContent: ExwindTools_MetaData.changelog.content -> EN")
+        ns.Log("ChangelogContent: ExwindTools_MetaData.changelog " .. result)
     end
 end
 

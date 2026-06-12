@@ -293,6 +293,32 @@ local function HookEXSP()
     return count
 end
 
+-- Some display modules create UIParent-parented Edit-Mode anchor frames
+-- whose caption is a raw zh literal (ExBoss IconAlert's "[Icon]" tag),
+-- outside every panel root above. Repaint them when Edit Mode refreshes;
+-- the module's SetEditMode callback ensures the frame exists by then.
+local EDITMODE_ANCHOR_FRAMES = {
+    "ExBoss_IconAlertAnchor",
+}
+
+local function TranslateEditModeAnchors()
+    for i = 1, #EDITMODE_ANCHOR_FRAMES do
+        local frame = rawget(_G, EDITMODE_ANCHOR_FRAMES[i])
+        if type(frame) == "table" then
+            TranslateRootLater(frame, "EditModeAnchor")
+        end
+    end
+end
+
+local function HookEditMode()
+    local tools = _G.ExwindTools
+    if type(tools) ~= "table" then return 0 end
+    local count = 0
+    if HookMethod("ExwindTools.EditMode", tools, "RefreshEditMode", TranslateEditModeAnchors) then count = count + 1 end
+    if HookMethod("ExwindTools.EditMode", tools, "ToggleGlobalEditMode", TranslateEditModeAnchors) then count = count + 1 end
+    return count
+end
+
 local function HookExBoss()
     local panel = _G.ExBoss and _G.ExBoss.UI and _G.ExBoss.UI.Panel or nil
     if type(panel) ~= "table" then return 0 end
@@ -325,8 +351,17 @@ local function HookExBoss()
         "PrivateAuraPage",
         "PrivateAuraMonitorPage",
         "ConditionsPage",
-        "MDTPage",
         "FixedTimelinePage",
+        "CountdownVoicePage",
+        "DungeonExtraPage",
+        "ExtraShieldBarPage",
+        "GeneralColorPage",
+        "GlobalTrashCDPage",
+        "IconAlertPage",
+        "OtherVoicePage",
+        "SpellPage",
+        "TargetAlertPage",
+        "ToolsPage",
     }) do
         count = count + HookPanelPage("ExBoss." .. pageName, panel[pageName])
     end
@@ -345,6 +380,7 @@ local function InstallHooks()
     count = count + HookGrid()
     count = count + HookExBoss()
     count = count + HookEXSP()
+    count = count + HookEditMode()
 
     if count > 0 then
         ns.Mark("UI", "TextReplacement")

@@ -57,6 +57,34 @@ local function WrapShowCountdown(target, scopeKey)
     ns.Mark("CenterAlert", scopeKey .. ":ShowCountdown")
 end
 
+-- ShowHealthEntries(entries): center-screen health-threshold text; each
+-- entry.text comes from boss-preset rule data, zh in CN presets. Entries
+-- are cloned so upstream rule tables are never mutated.
+local function WrapShowHealthEntries(target, scopeKey)
+    if type(target) ~= "table" or type(target.ShowHealthEntries) ~= "function" then return end
+    if ns.IsMarked("CenterAlert", scopeKey .. ":ShowHealthEntries") then return end
+    local original = target.ShowHealthEntries
+    target.ShowHealthEntries = function(self, entries, ...)
+        if type(entries) == "table" then
+            local cloned = {}
+            for i = 1, #entries do
+                local entry = entries[i]
+                if type(entry) == "table" and type(entry.text) == "string" then
+                    local copy = {}
+                    for k, v in pairs(entry) do copy[k] = v end
+                    copy.text = TranslateString(entry.text)
+                    cloned[i] = copy
+                else
+                    cloned[i] = entry
+                end
+            end
+            entries = cloned
+        end
+        return original(self, entries, ...)
+    end
+    ns.Mark("CenterAlert", scopeKey .. ":ShowHealthEntries")
+end
+
 -- Countdown:Show(spec): spec.displayName is the row label.
 local function WrapCountdownShow(target, scopeKey)
     if type(target) ~= "table" or type(target.Show) ~= "function" then return end
@@ -85,6 +113,7 @@ local function ApplyWraps()
     if type(UI.FlashTextMedium) == "table" then
         WrapShow(UI.FlashTextMedium, "FlashTextMedium")
         WrapShowCountdown(UI.FlashTextMedium, "FlashTextMedium")
+        WrapShowHealthEntries(UI.FlashTextMedium, "FlashTextMedium")
     end
     if type(UI.Countdown) == "table" then
         WrapCountdownShow(UI.Countdown, "Countdown")

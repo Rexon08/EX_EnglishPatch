@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.16
+
+- Absorb the latest upstream sync (EXBoss Wago integration, Trinket Monitor, Interrupt Tracker, Dungeon Extras page; MDT module removed upstream).
+- The EXBoss changelog panel now shows upstream's own English release notes (new bilingual changelog) instead of an older curated snapshot.
+- Center-screen boss health-threshold alerts now render in English.
+- Translate the trash-shield-bar toggle on the new Dungeon Extras page.
+- The Icon Alert Edit Mode anchor tag now shows "[Icon]" instead of Chinese.
+
 ## v1.0.15
 
 - Absorb the latest upstream sync (ExwindCore, ExwindTools, EXBoss, EXBossData).
