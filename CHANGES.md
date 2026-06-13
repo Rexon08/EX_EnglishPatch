@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.18
+
+- Now works with any subset of the EXWIND addons — enable just EXBoss, or just ExwindTools, without needing the rest.
+- A disabled EXWIND addon is simply skipped instead of disabling the English patch entirely.
+
 ## v1.0.17
 
 - Performance pass: lower memory use and less combat-time garbage.

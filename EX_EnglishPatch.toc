@@ -2,8 +2,8 @@
 ## Title: |cff00ccffEX|r English Patch
 ## Notes: EXWIND addons, in English. Live UI overlay — never writes to saved variables.
 ## Author: Rexon08
-## Version: 1.0.17
-## RequiredDeps: ExwindCore, ExwindTools, EXBossData, EXBoss, EXBOSS-EXWIND
+## Version: 1.0.18
+## OptionalDeps: ExwindCore, ExwindTools, EXBossData, EXBoss, EXBOSS-EXWIND
 ## SavedVariables: EX_EnglishPatchDB
 ## Category-enUS: AddOns
 ## AddonCompartmentFunc: EX_EnglishPatch_OnCompartmentClick

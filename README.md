@@ -20,8 +20,10 @@ on **Midnight 12.0.5**.
   Blizzard tables; combat-time text changes queue and apply on
   `PLAYER_REGEN_ENABLED`.
 
-Requires `ExwindCore`, `ExwindTools`, `EXBossData`, `EXBoss`, and
-`EXBOSS-EXWIND` (loaded first via `## RequiredDeps`).
+Works with any subset of `ExwindCore`, `ExwindTools`, `EXBossData`,
+`EXBoss`, and `EXBOSS-EXWIND`. They are `## OptionalDeps` — each
+enabled one loads before this addon and gets translated; disabled ones
+are simply skipped. With none enabled the patch loads and does nothing.
 
 ## License
 

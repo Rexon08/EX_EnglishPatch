@@ -48,9 +48,10 @@ function ns.OnAddonLoaded(targetAddonLower, fn)
             fn(addonName)
         end
     end)
-    -- Deps load before us via RequiredDeps, so their ADDON_LOADED has
+    -- Enabled OptionalDeps load before us, so their ADDON_LOADED has
     -- already fired. Dispatch immediately if loaded; markers make a later
-    -- fire (e.g. /reload) a no-op.
+    -- fire (e.g. /reload) a no-op. A disabled dep never loads and never
+    -- dispatches — every handler self-guards on its target global.
     local realName = ADDON_NAME_BY_LOWER[targetAddonLower] or targetAddonLower
     if IsAddOnLoaded(realName) and ns.IsEnabled and ns.IsEnabled() then
         local ok, err = pcall(fn, realName)
