@@ -298,4 +298,14 @@ ns.Translations.ExwindCoreL = {
     -- so the locale store can't reach it; repainted via Patches/ModuleListMeta.
     ["在屏幕上显示玩家当前总治疗吸收量。"]
         = "Shows your current total heal absorb on screen.",
+
+    -- Edit-mode chat notice: ExwindTools:ToggleGlobalEditMode prints
+    -- "全局编辑模式: " .. status as a raw literal (not L[]-wrapped), where
+    -- status is the colour-coded "[启用]"/"[禁用]" badge. Patches/PrintText
+    -- routes ExwindTools:Print through DisplayText, which substring-replaces
+    -- these. Brackets keep the badge keys distinct from the bare 启用/禁用
+    -- checkbox label above so the colour codes survive the swap.
+    ["全局编辑模式"] = "Global Edit Mode",
+    ["[启用]"]       = "[Enabled]",
+    ["[禁用]"]       = "[Disabled]",
 }

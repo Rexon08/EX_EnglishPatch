@@ -33,4 +33,9 @@ ns.Translations.LabelOverrides = {
     -- pushed over by sub-pixel font variance.
     ["Enable: show text in the center of the screen when entering/leaving combat"] =
         "Enable: center-screen text on combat enter/leave",
+
+    -- GlobalTrashCD "keep bar after ready" checkbox label ran into the
+    -- seconds input box to its right (column 12).
+    ["After spell cooldown ends"] =
+        "After cooldown ends",
 }

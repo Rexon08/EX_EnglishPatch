@@ -1,7 +1,9 @@
 ---@diagnostic disable: undefined-global
--- ExBoss prints entry/status notices via its own chat facade with raw
--- source literals (locale-store patching can't reach them). Wrapping the
--- facade translates only addon-owned output; global print() is untouched.
+-- ExBoss and ExwindCore print entry/status notices via their own chat
+-- facades with raw source literals (locale-store patching can't reach them).
+-- Wrapping the facades translates only addon-owned output; global print() is
+-- untouched. ExBoss.Print.Say and ExwindTools:Print are independent (Say
+-- prints directly, never delegating to Print), so a message is wrapped once.
 
 local _, ns = ...
 
@@ -31,5 +33,28 @@ local function WrapExBossPrint()
     ns.Log("PrintText: wrapped ExBoss.Print.Say")
 end
 
+-- ExwindTools:ToggleGlobalEditMode prints the edit-mode status line as a raw
+-- (non-L[]) literal, so the toggle leaks Chinese into chat. Translating the
+-- message before the original formats/prints it keeps any %s specifiers (they
+-- are pure ASCII and survive the substring swap).
+local function WrapExwindToolsPrint()
+    if ns.IsMarked("PrintText", "ExwindTools.Print") then return end
+    local ET = _G.ExwindTools
+    if type(ET) ~= "table" or type(ET.Print) ~= "function" then return end
+    if ET._eb_orig_Print then return end
+
+    local original = ET.Print
+    ET._eb_orig_Print = original
+    ET.Print = function(self, msg, ...)
+        if type(msg) == "string" then msg = Translate(msg) end
+        return original(self, msg, ...)
+    end
+
+    ns.Mark("PrintText", "ExwindTools.Print")
+    ns.Log("PrintText: wrapped ExwindTools:Print")
+end
+
 ns.OnAddonLoaded("exboss", WrapExBossPrint)
+ns.OnAddonLoaded("exwindcore", WrapExwindToolsPrint)
 ns.OnPlayerLogin(WrapExBossPrint)
+ns.OnPlayerLogin(WrapExwindToolsPrint)

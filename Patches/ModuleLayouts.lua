@@ -53,7 +53,57 @@ local function PatchItems(items)
     return count
 end
 
-local function PatchLayout(layout)
+-- Display-only column/row nudges for source layouts whose English labels
+-- collide with a neighbouring widget (the cells were sized for narrower
+-- Chinese). Keyed by module key + widget key; applied to the registered
+-- layout table the renderer reads. Geometry is never persisted — the DB
+-- keys off each row's `key`, not its x/y/w/h, and we write no DB. Re-verify
+-- when upstream changes a flagged layout (upstream_drift flags the file).
+local LAYOUT_GEOMETRY = {
+    -- TargetAlertPage: checkbox labels at column 1 overran the column-2/3
+    -- widgets. Widen the long column-1 checkboxes to cover their label and
+    -- shift the second/third columns right so nothing overlaps. A checkbox
+    -- label renders at natural width (Grid never clips it), so a label only
+    -- collides when another widget sits in the overrun.
+    ["ExBoss.TargetAlert"] = {
+        hideLevel92Casts         = { w = 12 },
+        hideLevel91Casts         = { w = 12 },
+        enableForDps             = { x = 14 },
+        locked                   = { x = 14 },
+        enableForHeal            = { x = 25 },
+        preview                  = { x = 25 },
+        singleTargetSoundEnabled = { w = 14 },
+        multiTargetSoundEnabled  = { w = 14 },
+        singleTargetLSM          = { x = 15, w = 15 },
+        multiTargetLSM           = { x = 15, w = 15 },
+    },
+}
+
+local GEOMETRY_FIELDS = { "x", "y", "w", "h" }
+
+local function ApplyGeometry(layout, moduleKey)
+    local geo = type(moduleKey) == "string" and LAYOUT_GEOMETRY[moduleKey] or nil
+    if type(geo) ~= "table" then return 0 end
+    local count = 0
+    for _, row in ipairs(layout) do
+        if type(row) == "table" and type(row.key) == "string" then
+            local over = geo[row.key]
+            if type(over) == "table" then
+                for _, field in ipairs(GEOMETRY_FIELDS) do
+                    local value = over[field]
+                    if value ~= nil and row[field] ~= value then
+                        ns.Patches.StashOriginal(row, field)
+                        row[field] = value
+                        count = count + 1
+                    end
+                end
+            end
+        end
+    end
+    return count
+end
+
+local function PatchLayout(layout, moduleKey)
     if type(layout) ~= "table" then return 0 end
     if layout._eb_patched then return 0 end
     local count = 0
@@ -63,9 +113,10 @@ local function PatchLayout(layout)
             count = count + PatchStringField(row, "tooltip")
             count = count + PatchStringField(row, "placeholder")
             count = count + PatchItems(row.items)
-            count = count + PatchLayout(row.children)
+            count = count + PatchLayout(row.children, moduleKey)
         end
     end
+    count = count + ApplyGeometry(layout, moduleKey)
     layout._eb_patched = true
     return count
 end
@@ -76,8 +127,8 @@ local function PatchRegisteredLayouts()
     if type(layouts) ~= "table" then return 0 end
 
     local count = 0
-    for _, layout in pairs(layouts) do
-        count = count + PatchLayout(layout)
+    for moduleKey, layout in pairs(layouts) do
+        count = count + PatchLayout(layout, moduleKey)
     end
     return count
 end
@@ -88,8 +139,8 @@ local function InstallRegisterHook()
     if type(ET) ~= "table" or type(ET.RegisterModuleLayout) ~= "function" then return end
     if type(hooksecurefunc) ~= "function" then return end
 
-    hooksecurefunc(ET, "RegisterModuleLayout", function(_, _, layout)
-        PatchLayout(layout)
+    hooksecurefunc(ET, "RegisterModuleLayout", function(_, moduleKey, layout)
+        PatchLayout(layout, moduleKey)
     end)
     ns.Mark("ModuleLayouts", "RegisterHook")
 end

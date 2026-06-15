@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.19
+
+- Translate the global edit-mode toggle chat message, which still printed in Chinese.
+- Fix overlapping labels on the Target Alert settings page so every option stays readable.
+- Fix a Trash CD setting label that overlapped its seconds input box.
+
 ## v1.0.18
 
 - Now works with any subset of the EXWIND addons — enable just EXBoss, or just ExwindTools, without needing the rest.
