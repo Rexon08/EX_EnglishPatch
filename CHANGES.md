@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.20
+
+- Updated for WoW patch 12.0.7.
+- Absorb the latest EXWIND upstream release.
+- Translate the new "Hide EXBoss Minimap Button" option on the EXBoss home page.
+- Show the new Sporefall raid and its boss Rotmire in English.
+
 ## v1.0.19
 
 - Translate the global edit-mode toggle chat message, which still printed in Chinese.

@@ -980,4 +980,7 @@ ns.Translations.ExBossL = {
     -- 2026-06-12 upstream sync — DungeonExtraPage trash-shield-bar toggle
     -- (page siblings all ship in upstream EXBOSS-Locale enUS)
     ["启用小怪护盾条模块"] = "Enable Trash Shield Bar Module",
+
+    -- 12.0.7 sync — HomePage toggle for the new EXBoss minimap button
+    ["隐藏 EXBoss 小地图按钮"] = "Hide EXBoss Minimap Button",
 }
