@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.21
+
+- Absorb the Season 2 EXWIND upstream release (8 new dungeons).
+- Translate the new settings-panel search boxes and Spell Target options.
+- Add English audio for the three new voice cues (Wake Adds AOE, Red Link, Green Link).
+- Fix a label overlap next to the new "Show Spell Name" option on the Target Alert page.
+
 ## v1.0.20
 
 - Updated for WoW patch 12.0.7.

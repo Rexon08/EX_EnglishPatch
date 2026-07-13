@@ -70,6 +70,7 @@ local LAYOUT_GEOMETRY = {
         hideLevel91Casts         = { w = 12 },
         enableForDps             = { x = 14 },
         locked                   = { x = 14 },
+        showSpellName            = { x = 14 },
         enableForHeal            = { x = 25 },
         preview                  = { x = 25 },
         singleTargetSoundEnabled = { w = 14 },

@@ -315,6 +315,12 @@ ns.Translations.VoiceFileByLabel = {
     ["连续躲圈"]      = "Dodge.ogg",
     ["靠近BOSS"]      = "Boss.ogg",
 
+    -- S2 sync — three new upstream cues (display EN ships in upstream enUS;
+    -- these only route the [Causese English] pack to bundled audio).
+    ["唤醒小怪(AOE)"] = "Spawn.ogg",
+    ["红色连线"]      = "Link.ogg",
+    ["绿色连线"]      = "Link.ogg",
+
     -- v26.5.24 sync — Causese-pack audio for the reworked EXBOSS-EXWIND cues.
     -- Mapped to our bundled English files; cues without a clean match
     -- (吐息/吸收治疗/坦克承伤/注意吐息/注意箭矢/白色/黑色/补给协议/传递/音效_*)

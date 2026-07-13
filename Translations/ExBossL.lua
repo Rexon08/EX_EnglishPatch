@@ -983,4 +983,17 @@ ns.Translations.ExBossL = {
 
     -- 12.0.7 sync — HomePage toggle for the new EXBoss minimap button
     ["隐藏 EXBoss 小地图按钮"] = "Hide EXBoss Minimap Button",
+
+    -- S2 upstream sync — sidebar search box (PanelFrame/GlobalSettingsPage/ToolsPage)
+    ["搜索..."]     = "Search...",
+    ["搜索设置..."] = "Search settings...",
+    ["没有匹配项"]  = "No matches",
+
+    -- S2 upstream sync — SpellTarget grow-direction dropdown
+    ["整排居中"] = "Center Row",
+    ["锚点居中"] = "Center Anchor",
+
+    -- S2 upstream sync — TargetAlertPage checkbox + StateIcons toggle
+    ["显示法术名称"] = "Show Spell Name",
+    ["隐藏时间文本"] = "Hide Time Text",
 }
