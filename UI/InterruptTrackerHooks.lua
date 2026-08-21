@@ -1,8 +1,14 @@
 ---@diagnostic disable: undefined-global
--- The InterruptTracker module attaches per-player CD bars to the global
--- anchor `ExInterruptTrackerAnchor`. Bar labels carry class/spell text
--- that's wider in English, so we refit each bar's FontString once the
--- anchor has children. Gated by the master fitWidths preference.
+-- Refits per-player interrupt CD bar labels, which carry class/spell text
+-- that is wider in English. Gated by the master fitWidths preference.
+--
+-- Deliberately inert on 12.1 builds: upstream renamed the anchor to
+-- `ExBossInterruptTrackerAnchor` and moved the bars onto EXUI Collections,
+-- which size themselves. Do NOT just re-point the global -- the party and
+-- self rows now render their name in SECRET mode, and UI_FitWidth calls
+-- GetStringWidth() on that FontString, which is a secret-value trap in
+-- combat. The lookup below stays on the old name so the scan no-ops until
+-- a Collection-safe fit exists.
 
 local _, ns = ...
 

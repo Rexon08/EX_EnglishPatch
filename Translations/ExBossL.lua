@@ -1020,4 +1020,87 @@ ns.Translations.ExBossL = {
     -- four newline-separated lines).
     ["控制全局显示：仅计时条 / 仅束状条 / 两者都启用 / 两者都隐藏。\n可分别关闭大秘境或团本首领提示；关闭后将整体禁用对应场景的 Boss 计时、中央文字、语音与颜色覆盖。\n可按当前职责过滤坦克类 Boss 技能提示。\n可选：首领战中自动将战斗音频预警分类音量静音（0），脱战恢复原值。"]
         = "Global display: timer bars only / bun bars only / both / neither.\nMythic+ and raid boss alerts switch off independently; turning one off disables that scene's boss timers, center text, voice and color overrides entirely.\nTank-only boss ability alerts can be filtered by your current role.\nOptional: mute the combat audio-warning sound category (0) during boss fights and restore it out of combat.",
+    -- 12.1 upstream sync (v26.8.21) — Appearance Profiles + the rewritten
+    -- Author/User Import-Export flow (ImportExportPage / VoicePackPage).
+    -- Role labels: upstream renamed 大米* to 大秘境* and spaced "团本 DPS",
+    -- so its own enUS rows no longer match. Keep its wording.
+    ["大秘境坦克"]        = "M+ Tank",
+    ["大秘境治疗"]        = "M+ Healer",
+    ["大秘境 DPS"]        = "M+ DPS",
+    ["团本 DPS"]          = "Raid DPS",
+    ["大秘境坦克 Author"] = "M+ Tank Author",
+    ["大秘境治疗 Author"] = "M+ Healer Author",
+    ["大秘境 DPS Author"] = "M+ DPS Author",
+    ["团本 DPS Author"]   = "Raid DPS Author",
+
+    -- Import / Export page — export half
+    -- Lives only in ExwindCore/Locale/enUS.lua upstream, which EXBoss's
+    -- L store does not chain to -- the button rendered "生成Export String".
+    -- Shortened from ExwindCore's "Generate Export String": the button is a
+    -- fixed 170x38 and the longer value overflows it in Expressway.
+    ["生成导出字符串"] = "Generate String",
+    ["导出包名称（可选，供接收方识别）"] = "Bundle Name (optional, shown to the recipient)",
+    ["是否导出外观配置"]   = "Export Appearance Profile",
+    ["选择外观配置"]       = "Select Appearance Profile",
+    ["没有可用外观配置"]   = "No appearance profiles available",
+    ["是否导出大秘境配置"] = "Export M+ Config",
+    ["是否导出团本配置"]   = "Export Raid Config",
+    ["外观 / Boss 配置"]   = "Appearance / Boss Config",
+    ["导出系统不可用"]     = "Export system unavailable",
+    ["已导出所选配置"]     = "Exported the selected configuration",
+    ["复制，或点击"]       = "to copy, or click",
+    ["Boss 配置始终按「Author + 对应 User 覆盖」成对导出。相同 Author 只会导出一次，并附带职责启用映射。"]
+        = "Boss configs always export as Author + bound User override pairs. A shared Author is exported once, with the role enable map attached.",
+
+    -- Import / Export page — import half
+    ["名称（必填）"]     = " Name (required)",
+    ["请填写："]         = "Required: ",
+    ["导入名称不能重复："] = "Import name must be unique: ",
+    ["请先点击解析"]     = "Click Parse first",
+    ["解析成功：选择后执行导入"]         = "Parsed: choose what to import, then run it",
+    ["解析成功：勾选要导入并启用的内容"] = "Parsed: tick what to import and enable",
+    ["导入系统不可用"]   = "Import system unavailable",
+    ["外观配置系统不可用"] = "Appearance profile system unavailable",
+    ["Boss 配置系统不可用"] = "Boss config system unavailable",
+    ["外观配置名称已存在："] = "Appearance profile name already exists: ",
+    ["Author 配置名称已存在："] = "Author config name already exists: ",
+    ["内容：外观与模块配置"] = "Contents: appearance and module settings",
+    ["导入后会直接启用，并重载界面。"] = "Importing applies immediately and reloads the UI.",
+    ["旧版内容："] = "Legacy contents: ",
+    ["旧字符串没有职责映射：可导入，但不会自动启用。"]
+        = "Legacy strings carry no role mapping: they import, but are not enabled automatically.",
+    ["导出包名称："] = "Bundle name: ",
+    [" 个 Author + User 配置对"] = " Author + User config pairs",
+    ["勾选的职责会导入并切换；未勾选的职责不会导入对应配置。"]
+        = "Ticked roles are imported and switched to; unticked roles keep their current config.",
+    ["导入并启用外观配置"] = "Import and Enable Appearance Profile",
+    ["导入旧版 Author + User（不自动启用）"] = "Import Legacy Author + User (not auto-enabled)",
+    ["导入并切换："] = "Import and switch: ",
+    ["战斗中不能导入或切换配置"] = "Cannot import or switch configs in combat",
+    ["没有勾选需要导入的内容"]   = "Nothing ticked to import",
+    ["无法重载界面，未完成切换"] = "Cannot reload the UI; switch not completed",
+    ["已导入。旧版字符串不会自动切换配置。"]
+        = "Imported. Legacy strings do not switch configs automatically.",
+
+    -- VoicePackPage — active-configuration card + Author management card
+    ["当前配置选择"] = "Active Configuration",
+    ["外观配置"]     = "Appearance Profile",
+    ["外观配置与六个职责的当前 Author 配置。切换任一项会在确认后重载界面。"]
+        = "Appearance profile and the Author for each of the six roles. Changing one reloads the UI.",
+    ["各职责只选择 Author；对应的 User 覆盖始终自动绑定该 Author，不能独立选择。"]
+        = "Pick only an Author per role; its User override is always bound to that Author and cannot be chosen separately.",
+    ["Author 配置管理"] = "Author Config Management",
+    ["这里只管理 Author。User 覆盖始终绑定 Author，不可独立选择或管理。"]
+        = "Authors only. User overrides stay bound to their Author.",
+    ["选择 Author 配置"] = "Select Author Config",
+    ["Author 名称"]      = "Author Name",
+    ["内置 Author"]      = "Built-in Author",
+    ["导入 Author"]      = "Imported Author",
+    ["内置 Author 无法删除"]         = "Built-in Authors cannot be deleted",
+    ["内置 Author 无法重命名或删除"] = "Built-in Authors cannot be renamed or deleted",
+    ["请选择 Author 配置并输入名称"] = "Select an Author config and enter a name",
+    ["请选择要删除的 Author 配置"]   = "Select an Author config to delete",
+    ["战斗中不能切换外观配置"] = "Cannot switch appearance profiles in combat",
+    ["切换失败："] = "Switch failed: ",
+
 }

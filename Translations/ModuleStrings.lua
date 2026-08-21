@@ -233,6 +233,23 @@ ns.Translations.ModuleStrings.DisplayText = {
     ["恩护"] = "Preservation",
     ["增辉"] = "Augmentation",
     ["噬灭"] = "Devourer",
+
+    -- 12.1 Appearance Profiles: profile names are raw literals written into
+    -- ExBoss's own DB, so they can only be fixed at the display seam.
+    ["默认外观"]   = "Default Appearance",
+    ["导入的外观"] = "Imported Appearance",
+
+    -- ImportExportPage builds two row titles by concatenation, so the zh
+    -- tail never reaches L[...]:
+    --   category .. " Author 配置"
+    --   scene .. " Author（" .. roles .. "）"
+    [" Author 配置"] = " Author Config",
+    [" Author（"]    = " Author (",
+    ["）"]           = ")",
+
+    -- Schema-5 migration suffixes a cloned Author config name in place
+    -- (Modules/Boss/Store.lua), so it lands in ExBoss's own DB as data.
+    [" (保留的用户覆盖)"] = " (kept user overrides)",
 }
 
 -- M+ Spell Info data — display-only translations. Lookup-index keys
@@ -630,3 +647,15 @@ ns.Translations.ModuleStrings.ExactOnly = {
     ["中文"] = "Chinese",   -- HomePage locale toggle labels
     ["英文"] = "English",
 }
+
+-- Captions on the Import/Export page's appearance-profile dropdown, used
+-- by UI/ImportExportPageHooks.lua to find that one widget. Both forms are
+-- listed: the page can be built before the locale overlay merges, so the
+-- live FontString may still carry the zh source key. Values unused.
+ns.Translations.ImportExportDropLabels = {}
+for _, text in ipairs({
+    "\233\128\137\230\139\169\229\164\150\232\167\130\233\133\141\231\189\174", -- 选择外观配置
+    "Select Appearance Profile",
+}) do
+    ns.Translations.ImportExportDropLabels[text] = true
+end

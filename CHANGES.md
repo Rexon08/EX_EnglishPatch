@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.1.1
+
+- Absorb the EXBoss v26.8.21 update.
+- Translate the new Appearance Profiles system: profile names, the active-configuration card and the profile picker.
+- Translate the rewritten Import / Export page — the Author + User bundle export, per-role import checkboxes, and every status and error message.
+- Translate the new Author config management card (rename, delete, built-in vs imported).
+- English names for the Mythic+ role labels upstream renamed this build (M+ Tank / Healer / DPS, Raid DPS).
+- Fixed two Import / Export page glitches: a half-Chinese button, and the appearance-profile dropdown label overlapping the checkbox above it.
+
 ## v1.1.0
 
 **Heads up:** EXBoss itself is still an early 12.1 build and not fully optimized for the new patch yet. If something feels rough, it is likely on their end and should settle as EXWIND pushes updates.
