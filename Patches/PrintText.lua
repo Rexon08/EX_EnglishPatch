@@ -33,10 +33,9 @@ local function WrapExBossPrint()
     ns.Log("PrintText: wrapped ExBoss.Print.Say")
 end
 
--- ExwindTools:ToggleGlobalEditMode prints the edit-mode status line as a raw
--- (non-L[]) literal, so the toggle leaks Chinese into chat. Translating the
--- message before the original formats/prints it keeps any %s specifiers (they
--- are pure ASCII and survive the substring swap).
+-- ExwindTools:Print carries status notices that bypass L[...] as raw
+-- literals. Translating before the original formats/prints keeps any %s
+-- specifiers (pure ASCII, so they survive the substring swap).
 local function WrapExwindToolsPrint()
     if ns.IsMarked("PrintText", "ExwindTools.Print") then return end
     local ET = _G.ExwindTools

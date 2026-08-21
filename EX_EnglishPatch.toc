@@ -1,15 +1,15 @@
-## Interface: 120005, 120007
+## Interface: 120007, 120100
 ## Title: |cff00ccffEX|r English Patch
 ## Notes: EXWIND addons, in English. Live UI overlay — never writes to saved variables.
 ## Author: Rexon08
-## Version: 1.0.21
+## Version: 1.1.0
 ## OptionalDeps: ExwindCore, ExwindTools, EXBossData, EXBoss, EXBOSS-EXWIND
 ## SavedVariables: EX_EnglishPatchDB
 ## Category-enUS: AddOns
 ## AddonCompartmentFunc: EX_EnglishPatch_OnCompartmentClick
 ## IconTexture: Interface\AddOns\EX_EnglishPatch\Textures\Icon.png
 ## X-License: MIT
-## X-License-Note: Code MIT; sound/*.ogg GPL (Causese); see CREDITS.md for upstream attribution.
+## X-License-Note: MIT; see CREDITS.md for upstream attribution.
 
 # Core (namespace, idempotency, log, DB, combat queue, event bus)
 Core\Init.lua
@@ -39,10 +39,8 @@ Patches\ModuleLayouts.lua
 Patches\ModuleListMeta.lua
 Patches\StaticPopups.lua
 Patches\EncounterData.lua
-Patches\PrivateAuraData.lua
 Patches\TrashCDData.lua
 Patches\TrashCDPreset.lua
-Patches\TrashCDCustomEvents.lua
 Patches\ChangelogContent.lua
 Patches\MobSpellsData.lua
 Patches\VoicePack.lua
@@ -52,7 +50,8 @@ Patches\TimelineRebuild.lua
 Patches\MythicDamageFormat.lua
 Patches\FontEnforce.lua
 
-# UI hooks (hooksecurefunc only; gated by combat queue)
+# UI hooks (hooksecurefunc for C widget methods; ns.HookMethodPost for
+# upstream render methods that may yield in LibAsync coroutines)
 UI\WidthFit.lua
 UI\WatchSetText.lua
 UI\BossPageHooks.lua
@@ -63,5 +62,4 @@ UI\DropdownAdapter.lua
 UI\DropdownPoolCleanup.lua
 UI\TextReplacementHooks.lua
 UI\VoicePackPageHooks.lua
-UI\DogJumpTrackerHooks.lua
 UI\SettingsPanel.lua

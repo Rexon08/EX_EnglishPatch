@@ -308,4 +308,13 @@ ns.Translations.ExwindCoreL = {
     ["全局编辑模式"] = "Global Edit Mode",
     ["[启用]"]       = "[Enabled]",
     ["[禁用]"]       = "[Disabled]",
+
+    -- 12.1 upstream sync — minimap/compartment tooltip
+    ["打开 Exwind 面板"] = "Open Exwind Panel",
+
+    -- Composite anchor group (CreateAnchorGroup): the checkbox sits at
+    -- x=16 and the target EditBox at x=142; upstream's "Enable Anchor"
+    -- (~95 px after the 34 px box) runs under the EditBox. "Use Anchor"
+    -- ends ~20 px short of it.
+    ["启用锚点"] = "Use Anchor",
 }

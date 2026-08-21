@@ -258,6 +258,25 @@ local function InstallMultiselectMenuBuilder(dropdown, label)
     end)
 end
 
+-- Upstream pool-reuse bug: the dropdown factories acquire a pooled
+-- GridDropdown but never reset labelText's anchors, so a dropdown last
+-- used in a grid row with labelPos="left" keeps that anchor when reused
+-- by a fixed-position caller (the widgetlayout card's "Growth Direction"
+-- label then hangs left of the card and the scroll frame clips it to its
+-- last characters). Re-anchor to the factory default after every acquire;
+-- ExwindGrid runs UpdateLabelStyle afterwards, so grid rows with an
+-- explicit labelPos still win.
+local function ResetLabelAnchor(dropdown)
+    if type(dropdown) ~= "table" then return dropdown end
+    local label = dropdown.labelText
+    if type(label) == "table" and type(label.SetPoint) == "function" then
+        label:ClearAllPoints()
+        label:SetPoint("BOTTOMLEFT", dropdown, "TOPLEFT", 0, 2)
+        if label.SetJustifyH then label:SetJustifyH("LEFT") end
+    end
+    return dropdown
+end
+
 local function ApplyPatch()
     if ns.IsMarked("UI", "DropdownPoolCleanup") then return end
     if type(_G.ExwindTools) ~= "table"
@@ -276,11 +295,11 @@ local function ApplyPatch()
             if mediaType == "font" then
                 local ok, dropdown = pcall(CreateSafeFontDropdown, self, parent, mediaType, width, label, currentValue, onSelect)
                 if ok and dropdown then
-                    return dropdown
+                    return ResetLabelAnchor(dropdown)
                 end
                 if not ok then ns.Warn("DropdownPoolCleanup(font): " .. tostring(dropdown)) end
             end
-            return origCreateLSM(self, parent, mediaType, width, label, currentValue, onSelect)
+            return ResetLabelAnchor(origCreateLSM(self, parent, mediaType, width, label, currentValue, onSelect))
         end
     end
 
@@ -291,7 +310,7 @@ local function ApplyPatch()
             local ok, err = pcall(InstallGenericMenuBuilder, dropdown)
             if not ok then ns.Warn("DropdownPoolCleanup(generic): " .. tostring(err)) end
         end
-        return dropdown
+        return ResetLabelAnchor(dropdown)
     end
 
     if type(origCreateMS) == "function" then
@@ -302,7 +321,18 @@ local function ApplyPatch()
                 local ok, err = pcall(InstallMultiselectMenuBuilder, dropdown, label)
                 if not ok then ns.Warn("DropdownPoolCleanup(multiselect): " .. tostring(err)) end
             end
-            return dropdown
+            return ResetLabelAnchor(dropdown)
+        end
+    end
+
+    -- Sound/texture LSM factories share the same pooled labelText; wrap
+    -- them for the anchor reset only (no menu rebuild needed there).
+    for _, name in ipairs({ "CreateLSMSoundDropdown", "CreateLSMTextureDropdown" }) do
+        local orig = EXUI[name]
+        if type(orig) == "function" then
+            EXUI[name] = function(...)
+                return ResetLabelAnchor(orig(...))
+            end
         end
     end
 
@@ -311,7 +341,7 @@ local function ApplyPatch()
         (type(origCreateLSM) == "function" and "CreateLSMDropdown(font), " or "") ..
         "CreateDropdown" ..
         (type(origCreateMS) == "function" and " + CreateMultiSelectDropdown" or "") ..
-        ")")
+        " + label-anchor resets)")
 end
 
 -- ExwindTools.UI exists by ExwindCore's ADDON_LOADED. PLAYER_LOGIN is a

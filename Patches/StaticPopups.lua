@@ -14,23 +14,6 @@ local function PatchStaticPopups()
     if ns.IsMarked("StaticPopups") then return end
     if type(_G.StaticPopupDialogs) ~= "table" then return end
 
-    -- Confirm dialog shown on every edit-mode toggle.
-    if NeedPopup("EXWIND_EDIT_MODE_EXIT") then
-        _G.StaticPopupDialogs["EXWIND_EDIT_MODE_EXIT"] = {
-            text = "Exit Edit Mode?",
-            button1 = "OK",
-            OnAccept = function()
-                if _G.ExwindTools and _G.ExwindTools.ToggleGlobalEditMode then
-                    _G.ExwindTools:ToggleGlobalEditMode(false)
-                end
-            end,
-            timeout = 0,
-            whileDead = true,
-            hideOnEscape = false,
-            preferredIndex = 3,
-        }
-    end
-
     -- Shown when the compartment is opened without ExwindTools loaded.
     -- The %s payload is still raw Chinese (built in source without a
     -- hookable seam) — we just give the dialog an English skeleton.

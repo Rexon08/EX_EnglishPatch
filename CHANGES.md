@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.1.0
+
+**Heads up:** EXBoss itself is still an early 12.1 build and not fully optimized for the new patch yet. If something feels rough, it is likely on their end and should settle as EXWIND pushes updates.
+
+- Updated for WoW patch 12.1 and the 12.1 EXWIND rewrite (EXBoss, ExwindTools, ExwindCore).
+- Translates the new Season 2 dungeon and raid lineup: dungeon names, all 24 bosses, and every trash mob name.
+- Boss, trash and aura spell names now ship in English for every client language instead of only English clients.
+- Fixed the boss ability settings pages showing up empty with the patch enabled.
+- Tidied up overlapping and cut-off labels across the settings pages (spell editors, voice pack page, Mythic Mob Casts, trash cooldowns and more).
+- Seven new voice cue labels, plus the new author/preset cards and global display description on the settings pages.
+- Dropped the bundled voice pack: EXBoss now ships its own English audio and selects it automatically on English clients.
+- Removed overlay code for upstream features that no longer exist (private auras, custom trash events, the dog-jump panel).
+
 ## v1.0.21
 
 - Absorb the Season 2 EXWIND upstream release (8 new dungeons).

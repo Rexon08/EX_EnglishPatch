@@ -1,7 +1,7 @@
 ---@diagnostic disable: undefined-global
 -- Translates display strings in _G.EXBOSS_TRASH_CD_DATA. Spell rows have
--- an authoritative `nameEN` field; mob names rely on the curated zh→en
--- map and are left Chinese when no curated entry exists.
+-- an authoritative `nameEN` field; mob names come from upstream's own
+-- npcID locale table first, then the curated zh→en map.
 
 local _, ns = ...
 
@@ -17,8 +17,7 @@ end
 local function TranslateMobRow(mobRow)
     if type(mobRow) ~= "table" then return end
     StashOriginal(mobRow, "name")
-    -- Mobs have no nameEN; rely on the curated zh→en table.
-    local en = ns.Resolver.SpellNameByZh(mobRow.name)
+    local en = ns.Resolver.MobName(mobRow.npcID, mobRow.name)
     if en then mobRow.name = en end
 end
 

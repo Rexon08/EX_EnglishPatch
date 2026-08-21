@@ -45,16 +45,18 @@ end
 
 local function InstallHook()
     if ns.IsMarked("UI", "VoicePackPageDropLabelHide") then return end
-    if type(hooksecurefunc) ~= "function" then return end
     local Page = _G.ExBoss and _G.ExBoss.UI and _G.ExBoss.UI.Panel
         and _G.ExBoss.UI.Panel.VoicePackPage
-    if type(Page) ~= "table" or type(Page.Render) ~= "function" then return end
+    if type(Page) ~= "table" then return end
 
-    hooksecurefunc(Page, "Render", function(_, contentFrame)
-        ns.RunSafe("VoicePackPageHooks:HideDropLabel", function()
+    -- HookMethodPost, not hooksecurefunc: Render may run inside a LibAsync
+    -- coroutine, and hooksecurefunc's C frame breaks its yields.
+    if not ns.HookMethodPost("VoicePackPageHooks:HideDropLabel", Page, "Render",
+        function(_, contentFrame)
             HideMatchingFontStrings(contentFrame, 6)
-        end)
-    end)
+        end) then
+        return
+    end
     ns.Mark("UI", "VoicePackPageDropLabelHide")
 end
 

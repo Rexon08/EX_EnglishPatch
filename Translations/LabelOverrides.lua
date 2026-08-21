@@ -38,4 +38,10 @@ ns.Translations.LabelOverrides = {
     -- seconds input box to its right (column 12).
     ["After spell cooldown ends"] =
         "After cooldown ends",
+
+    -- Boss-spell editor (BossPage/TrashCD): the rename checkbox clips at
+    -- its cell even after widening to the rename input at the next column.
+    -- Matches the Text-Settings card, which already labels this "Rename".
+    ["Cast Bar Rename"] =
+        "Rename",
 }

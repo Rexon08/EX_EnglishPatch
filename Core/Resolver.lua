@@ -119,6 +119,34 @@ function R.SpellName(spellID, nameEN, fallbackZh)
         or R.SpellNameByZh(fallbackZh)
 end
 
+-- ── NPC / mob names ──────────────────────────────────────────
+-- Upstream ships EXBOSS_TRASH_CD_LOCALE (npcID -> per-locale name) since
+-- 12.1; it is author-maintained English, so it outranks our curated zh map.
+function R.MobNameByID(npcID)
+    npcID = tonumber(npcID)
+    if not npcID then return nil end
+
+    local store = rawget(_G, "EXBOSS_TRASH_CD_LOCALE")
+    local row = type(store) == "table" and store[npcID] or nil
+    if type(row) == "table" then
+        local en = NonEmptyString(row.enUS)
+        if en then return en end
+    end
+    return nil
+end
+
+function R.MobNameByZh(zh)
+    zh = NonEmptyString(zh)
+    if not zh then return nil end
+    local mobSpells = ns.Translations.MobSpells
+    local names = mobSpells and mobSpells.MobNames
+    return names and names[zh] or nil
+end
+
+function R.MobName(npcID, fallbackZh)
+    return R.MobNameByID(npcID) or R.MobNameByZh(fallbackZh)
+end
+
 -- ── Voice labels ────────────────────────────────────────────────────────
 function R.VoiceLabel(zh)
     zh = NonEmptyString(zh)
@@ -201,6 +229,7 @@ local function BuildDisplayCache()
     MergeMap(lookup, moduleStrings.DisplayText)
     MergeMap(lookup, moduleStrings)
     MergeMap(lookup, mobSpells.MobNames)
+    MergeMap(lookup, ns.Translations.VoicePackNames)
     MergeMap(lookup, ns.Translations.VoiceLabels)
     MergeMap(lookup, ns.Translations.ExBossL)
     MergeMap(lookup, ns.Translations.ExwindCoreL)
@@ -209,7 +238,13 @@ local function BuildDisplayCache()
     for k in pairs(lookup) do keys[#keys + 1] = k end
     table.sort(keys, SortKeysByLengthDesc)
 
-    _displayCache = { keys = keys, lookup = lookup }
+    -- Whole-string-only entries: keys too short for the substring pass
+    -- (bare 2-glyph values like the font dropdown's default entry) are
+    -- consulted exclusively on an exact match and never join `keys`.
+    local exactOnly = {}
+    MergeMap(exactOnly, moduleStrings.ExactOnly)
+
+    _displayCache = { keys = keys, lookup = lookup, exactOnly = exactOnly }
     _displayResultCache = {}
     _displayResultCount = 0
     return _displayCache
@@ -247,7 +282,7 @@ function R.DisplayText(text)
 
     local cache = _displayCache or BuildDisplayCache()
 
-    local exact = cache.lookup[text]
+    local exact = cache.lookup[text] or cache.exactOnly[text]
     if type(exact) == "string" and exact ~= "" and exact ~= text then
         MemoResult(text, exact)
         return exact, true

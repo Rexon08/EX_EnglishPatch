@@ -1,7 +1,8 @@
 ---@diagnostic disable: undefined-global
 -- After BossPage:Render and :RefreshSpellUI run, walk a small set of
 -- known FontString descendants and refit them via UI_FitWidth.
--- hooksecurefunc only — never method replacement.
+-- ns.HookMethodPost, not hooksecurefunc: page renders may run inside
+-- LibAsync coroutines, and hooksecurefunc's C frame breaks their yields.
 
 local _, ns = ...
 
@@ -34,22 +35,20 @@ local function HookBossPage()
     local Page = _G.ExBoss.UI.Panel.BossPage
     local hookedAny = false
 
-    if type(Page.Render) == "function" then
-        hooksecurefunc(Page, "Render", function(_, leftFrame, contentFrame)
-            if not ns.GetDB().fitWidths then return end
-            FitDescendantFontStrings(leftFrame,    { padding = 12, maxWidth = 220 })
-            FitDescendantFontStrings(contentFrame, { padding = 12, maxWidth = 480 })
-        end)
+    if ns.HookMethodPost("BossPage:Render", Page, "Render", function(_, leftFrame, contentFrame)
+        if not ns.GetDB().fitWidths then return end
+        FitDescendantFontStrings(leftFrame,    { padding = 12, maxWidth = 220 })
+        FitDescendantFontStrings(contentFrame, { padding = 12, maxWidth = 480 })
+    end) then
         hookedAny = true
     end
 
-    if type(Page.RefreshSpellUI) == "function" then
-        hooksecurefunc(Page, "RefreshSpellUI", function(self)
-            if not ns.GetDB().fitWidths then return end
-            -- Opportunistic refit — exact spell-card field names aren't
-            -- known without live smoke testing.
-            FitDescendantFontStrings(self, { padding = 12, maxWidth = 480 })
-        end)
+    if ns.HookMethodPost("BossPage:RefreshSpellUI", Page, "RefreshSpellUI", function(self)
+        if not ns.GetDB().fitWidths then return end
+        -- Opportunistic refit — exact spell-card field names aren't
+        -- known without live smoke testing.
+        FitDescendantFontStrings(self, { padding = 12, maxWidth = 480 })
+    end) then
         hookedAny = true
     end
 

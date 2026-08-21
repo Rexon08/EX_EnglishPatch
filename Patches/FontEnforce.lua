@@ -87,7 +87,9 @@ end
 local function FallbackRegion(region)
     if not region or type(region.GetObjectType) ~= "function" then return end
     local ok, objType = pcall(region.GetObjectType, region)
-    if not ok or objType ~= "FontString" then return end
+    -- EditBoxes too: zh storage values stay untranslated by design, and a
+    -- painted EditBox renders them as .notdef boxes (Expressway has no CJK).
+    if not ok or (objType ~= "FontString" and objType ~= "EditBox") then return end
 
     local origPath = region[ORIG_FONT]
     if type(origPath) ~= "string" or origPath == "" then return end
@@ -220,22 +222,20 @@ local function HookExwindToolsUI()
     local UI = type(ET) == "table" and ET.UI or nil
     if type(UI) ~= "table" then return end
 
-    if type(UI.Toggle) == "function" then
-        hooksecurefunc(UI, "Toggle", function(self)
-            local f = self and self.MainFrame
-            if f and type(f.IsShown) == "function" and f:IsShown() then
-                ns.RunSafe("FontEnforce:EXTools:Toggle", function() EnforceIn(f) end)
-            end
-        end)
-    end
-    if type(UI.RefreshContent) == "function" then
-        hooksecurefunc(UI, "RefreshContent", function(self)
-            local f = self and self.MainFrame
-            if f then
-                ns.RunSafe("FontEnforce:EXTools:Refresh", function() EnforceIn(f) end)
-            end
-        end)
-    end
+    -- HookMethodPost, not hooksecurefunc: these render entry points may run
+    -- inside LibAsync coroutines, and hooksecurefunc's C frame breaks yields.
+    ns.HookMethodPost("FontEnforce:EXTools:Toggle", UI, "Toggle", function(self)
+        local f = self and self.MainFrame
+        if f and type(f.IsShown) == "function" and f:IsShown() then
+            EnforceIn(f)
+        end
+    end)
+    ns.HookMethodPost("FontEnforce:EXTools:Refresh", UI, "RefreshContent", function(self)
+        local f = self and self.MainFrame
+        if f then
+            EnforceIn(f)
+        end
+    end)
 
     ns.Mark("FontEnforce", "ExwindToolsUI")
 end
@@ -250,30 +250,25 @@ local function HookExBossPanel()
         return Panel._frame or Panel.MainFrame or Panel.mainFrame
     end
 
-    if type(Panel.Toggle) == "function" then
-        hooksecurefunc(Panel, "Toggle", function()
-            local f = rootFrame()
-            if f and type(f.IsShown) == "function" and f:IsShown() then
-                ns.RunSafe("FontEnforce:EXBoss:Toggle", function() EnforceIn(f) end)
-            end
-        end)
-    end
-    if type(Panel.Show) == "function" then
-        hooksecurefunc(Panel, "Show", function()
-            local f = rootFrame()
-            if f then
-                ns.RunSafe("FontEnforce:EXBoss:Show", function() EnforceIn(f) end)
-            end
-        end)
-    end
-    if type(Panel.SetTab) == "function" then
-        hooksecurefunc(Panel, "SetTab", function()
-            local f = rootFrame()
-            if f and type(f.IsShown) == "function" and f:IsShown() then
-                ns.RunSafe("FontEnforce:EXBoss:SetTab", function() EnforceIn(f) end)
-            end
-        end)
-    end
+    -- HookMethodPost, not hooksecurefunc — same yield-safety reason as above.
+    ns.HookMethodPost("FontEnforce:EXBoss:Toggle", Panel, "Toggle", function()
+        local f = rootFrame()
+        if f and type(f.IsShown) == "function" and f:IsShown() then
+            EnforceIn(f)
+        end
+    end)
+    ns.HookMethodPost("FontEnforce:EXBoss:Show", Panel, "Show", function()
+        local f = rootFrame()
+        if f then
+            EnforceIn(f)
+        end
+    end)
+    ns.HookMethodPost("FontEnforce:EXBoss:SetTab", Panel, "SetTab", function()
+        local f = rootFrame()
+        if f and type(f.IsShown) == "function" and f:IsShown() then
+            EnforceIn(f)
+        end
+    end)
 
     ns.Mark("FontEnforce", "EXBossPanel")
 end

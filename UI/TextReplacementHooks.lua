@@ -221,12 +221,16 @@ local function TranslateKnownRootsLater(reason)
     ScheduleKnown(reason)
 end
 
+-- Grid/page render methods can run inside LibAsync coroutines and yield
+-- per item; hooksecurefunc's C frame would kill those yields ("attempt to
+-- yield across metamethod/C-call boundary") and leave the settings area
+-- empty. HookMethodPost is a pure-Lua wrapper, transparent to yields.
 local function HookMethod(scope, owner, method, callback)
-    if type(hooksecurefunc) ~= "function" then return false end
-    if type(owner) ~= "table" or type(owner[method]) ~= "function" then return false end
     local markKey = tostring(scope) .. "." .. tostring(method)
     if ns.IsMarked("TextReplacement", markKey) then return false end
-    hooksecurefunc(owner, method, callback)
+    if not ns.HookMethodPost("TextReplacement:" .. markKey, owner, method, callback) then
+        return false
+    end
     ns.Mark("TextReplacement", markKey)
     return true
 end
@@ -320,12 +324,21 @@ local function TranslateEditModeAnchors()
     end
 end
 
+-- 12.1 moved Edit Mode off ExwindTools onto the shared ExwindCore UI
+-- object (ExwindTools.UI); anchor frames are built when the overlay opens.
 local function HookEditMode()
-    local tools = _G.ExwindTools
-    if type(tools) ~= "table" then return 0 end
+    local ui = _G.ExwindTools and _G.ExwindTools.UI or nil
+    if type(ui) ~= "table" then return 0 end
     local count = 0
-    if HookMethod("ExwindTools.EditMode", tools, "RefreshEditMode", TranslateEditModeAnchors) then count = count + 1 end
-    if HookMethod("ExwindTools.EditMode", tools, "ToggleGlobalEditMode", TranslateEditModeAnchors) then count = count + 1 end
+    for _, method in ipairs({
+        "ToggleEditMode",
+        "SetEditModeOverlayVisible",
+        "RefreshEditModeControlPanel",
+    }) do
+        if HookMethod("ExwindTools.EditMode", ui, method, TranslateEditModeAnchors) then
+            count = count + 1
+        end
+    end
     return count
 end
 
@@ -353,21 +366,16 @@ local function HookExBoss()
         "CastProgressBarPage",
         "TimerBarPage",
         "RingProgressPage",
-        "FlashTextPage",
         "FlashTextMediumPage",
         "CountdownPage",
         "BunBarPage",
         "ImportExportPage",
-        "PrivateAuraPage",
-        "PrivateAuraMonitorPage",
-        "ConditionsPage",
         "CountdownVoicePage",
-        "DungeonExtraPage",
         "ExtraShieldBarPage",
-        "GeneralColorPage",
         "GlobalTrashCDPage",
         "IconAlertPage",
-        "SpellPage",
+        "InterruptTrackerPage",
+        "MythicCastPage",
         "TargetAlertPage",
         "ToolsPage",
     }) do

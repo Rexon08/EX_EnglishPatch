@@ -531,7 +531,8 @@ ns.Translations.ExBossL = {
     ["实战只在 encounterID=2066 且事件237附近扫描队友有害光环实例ID，用最近两次目标排除下次候选。预览会显示样例面板并让候选队友框架发光，不写入实战记录。"] = "In live combat this only scans harmful aura instanceIDs near encounterID=2066 and event 237, excluding the last two targets from the next candidate set. Preview shows sample panels and glows candidate party frames without writing combat records.",
     ["事件 "] = "Event ",
     ["事件ID"] = "Event ID",
-    ["试听"] = "Preview",
+    -- "Preview" (55 px) overflows the 34-44 px spell-editor grid buttons.
+    ["试听"] = "Play",
     ["手动"] = "Manual",
     ["首领列表"] = "Boss List",
     ["首领战时自动关闭战斗音频预警"] = "Auto-disable Combat Audio Alerts during boss fights",
@@ -756,7 +757,7 @@ ns.Translations.ExBossL = {
     ["|cff00ff00%s|r = 技能名称  |cffffd100%t|r = 倒计时数字"]      = "|cff00ff00%s|r = spell name  |cffffd100%t|r = countdown number",
     ["4) 清除全部设置（包含外观）"]                                 = "4) Clear All Settings (including appearance)",
     ["边框"]                                                        = "Border",
-    ["播放文字"]                                                    = "Spoken Text",
+    ["播放文字"]                                                    = "Play Text",
     ["此功能为检查玩家当前读条是否能在该技能读条结束前读完"]      = "Checks whether your current cast finishes before the boss's cast completes.",
     ["倒数文本"]                                                    = "Countdown Text",
     ["倒数语音"]                                                    = "Countdown Voice",
@@ -996,4 +997,27 @@ ns.Translations.ExBossL = {
     -- S2 upstream sync — TargetAlertPage checkbox + StateIcons toggle
     ["显示法术名称"] = "Show Spell Name",
     ["隐藏时间文本"] = "Hide Time Text",
+
+    -- 12.1 upstream sync — VoicePackPage author cards
+    ["各职责选择 Author；User 配置由现有运行时逻辑自动使用。"]
+        = "Pick an Author per role; your own User config is applied automatically by the existing runtime.",
+
+    -- Boss-spell editor checkbox labels clip at their grid cell
+    -- (ApplyBossSettingsLabelSafety); upstream's enUS values overflow even
+    -- after the ModuleLayouts width nudges, so ship tighter values.
+    ["|cffffd637中央文本|r"] = "|cffffd637Center Text|r",
+    ["|cffffd637倒数提示|r"] = "|cffffd637Countdown|r",
+
+    -- VoicePackPage profile-management card: upstream's enUS desc wraps a
+    -- line further than the zh original and runs into the widgets below
+    -- (fixed-y layout). Same for the bottom status line.
+    ["大秘境和团本的用户配置都只保存玩家明确写入的覆盖；内置作者不可改名或删除。"]
+        = "User profiles keep only your explicit overrides; built-in Authors can't be renamed.",
+    ["大秘境与团本均按当前职责分别选择 Author 与 User；玩家修改只保留为明确 User 覆盖。"]
+        = "M+ and Raid pick Author/User per role; your changes are saved as explicit User overrides.",
+
+    -- 12.1 upstream sync — GlobalSettingsPage overview blurb (one key,
+    -- four newline-separated lines).
+    ["控制全局显示：仅计时条 / 仅束状条 / 两者都启用 / 两者都隐藏。\n可分别关闭大秘境或团本首领提示；关闭后将整体禁用对应场景的 Boss 计时、中央文字、语音与颜色覆盖。\n可按当前职责过滤坦克类 Boss 技能提示。\n可选：首领战中自动将战斗音频预警分类音量静音（0），脱战恢复原值。"]
+        = "Global display: timer bars only / bun bars only / both / neither.\nMythic+ and raid boss alerts switch off independently; turning one off disables that scene's boss timers, center text, voice and color overrides entirely.\nTank-only boss ability alerts can be filtered by your current role.\nOptional: mute the combat audio-warning sound category (0) during boss fights and restore it out of combat.",
 }

@@ -78,9 +78,82 @@ local LAYOUT_GEOMETRY = {
         singleTargetLSM          = { x = 15, w = 15 },
         multiTargetLSM           = { x = 15, w = 15 },
     },
+
+    -- Boss-spell editor grid (~3.75 px/col at the 760 px grid child).
+    -- ApplyBossSettingsLabelSafety clamps checkbox labels to their own
+    -- cell, so English must fit w*cell-39 px: widen each cell to the next
+    -- widget's column and drop the tightest labels to 14 pt. Audited
+    -- offline via tools/audit_label_overflow.mjs.
+    ["ExBoss.BossPage.SpellEditor"] = {
+        centralEnabled               = { w = 30, labelSize = 14 },
+        countdownEnabled             = { w = 29, labelSize = 14 },
+        timerBarRenameEnabled        = { w = 29 },
+        ringCastCheckEnabled         = { w = 40 },
+        castProgressBarRenameEnabled = { w = 30 },
+        tr0Enabled                   = { w = 30, labelSize = 14 },
+        tr1Enabled                   = { w = 29, labelSize = 14 },
+        tr2Enabled                   = { w = 29, labelSize = 14 },
+        tr2PlayTextEnabled           = { w = 29, labelSize = 14 },
+        targetAlertVoiceEnabled      = { w = 22 },
+    },
+
+    -- Countdown voice page: the GTFO row's labelPos="left" labels hang off
+    -- the container's left edge (upstream sized them for 2-glyph zh), and
+    -- the per-digit "LSM Sound" label lands on the Source dropdown. Shift
+    -- the row right / shrink the Source dropdown so every label has room.
+    ["ExBoss.CountdownVoiceSettings"] = {
+        floorWarningSource  = { x = 14 },
+        floorWarningPack    = { x = 58 },
+        floorWarningLSM     = { x = 58 },
+        floorWarningPath    = { x = 58 },
+        previewFloorWarning = { x = 134 },
+        digitSource1  = { w = 30 },
+        digitSource2  = { w = 30 },
+        digitSource3  = { w = 30 },
+        digitSource4  = { w = 30 },
+        digitSource5  = { w = 30 },
+        digitSource6  = { w = 30 },
+        digitSource7  = { w = 30 },
+        digitSource8  = { w = 30 },
+        digitSource9  = { w = 30 },
+        digitSource10 = { w = 30 },
+    },
+
+    -- GlobalTrashCD settings page ("Trash Cooldown Nameplate Icons"): the
+    -- grid rows below the icongroup sit on a 6-cell pitch, but every widget
+    -- there carries a labelPos="top" label (~4 cells above the widget) and
+    -- the spacing slider's bar+value box runs ~7 cells tall — so the second
+    -- row's labels rendered on top of the first row's widgets. Open the
+    -- pitch to 12 cells and shift everything after it down to match.
+    ["ExBoss.TrashCD.Settings.Editor"] = {
+        nameplateIconStrata           = { y = 75 },
+        hideNameplateIconAboveSeconds = { y = 75 },
+        screenNameplatePreview        = { y = 82 },
+        nameplateIconText             = { y = 89 },
+    },
+
+    -- TrashCD spell editor (~4.04 px/col at the 818 px scroll child); same
+    -- clamp behavior as the BossPage editor.
+    ["ExBoss.TrashCD.SpellEditor"] = {
+        enabled                      = { w = 24 },
+        showBunBar                   = { w = 28 },
+        showTimerBar                 = { w = 31 },
+        showNameplate                = { w = 33 },
+        tr1Enabled                   = { w = 24 },
+        tr2Enabled                   = { w = 24 },
+        tr2PlayTextEnabled           = { w = 24, labelSize = 14 },
+        castProgressBarRenameEnabled = { w = 24 },
+        ringCastCheckEnabled         = { w = 45 },
+        targetAlertStealthEnabledV2  = { w = 34, labelSize = 14 },
+        tr1ValueTest                 = { w = 11 },
+        tr2ValueTest                 = { w = 11 },
+        targetAlertStartValueTest    = { w = 11 },
+    },
 }
 
-local GEOMETRY_FIELDS = { "x", "y", "w", "h" }
+-- labelSize is display-only like the box geometry: UpdateLabelStyle reads
+-- it per render and it never reaches any DB path.
+local GEOMETRY_FIELDS = { "x", "y", "w", "h", "labelSize" }
 
 local function ApplyGeometry(layout, moduleKey)
     local geo = type(moduleKey) == "string" and LAYOUT_GEOMETRY[moduleKey] or nil
@@ -141,6 +214,10 @@ local function InstallRegisterHook()
     if type(hooksecurefunc) ~= "function" then return end
 
     hooksecurefunc(ET, "RegisterModuleLayout", function(_, moduleKey, layout)
+        -- BossPage rebuilds its spell-editor rows in place and re-registers
+        -- the same table per selection; the sticky guard would otherwise
+        -- skip every rebuild after the first.
+        if type(layout) == "table" then layout._eb_patched = nil end
         PatchLayout(layout, moduleKey)
     end)
     ns.Mark("ModuleLayouts", "RegisterHook")
