@@ -97,16 +97,10 @@ local LAYOUT_GEOMETRY = {
         targetAlertVoiceEnabled      = { w = 22 },
     },
 
-    -- Countdown voice page: the GTFO row's labelPos="left" labels hang off
-    -- the container's left edge (upstream sized them for 2-glyph zh), and
-    -- the per-digit "LSM Sound" label lands on the Source dropdown. Shift
-    -- the row right / shrink the Source dropdown so every label has room.
+    -- Countdown voice page: the per-digit "LSM Sound" label lands on the
+    -- Source dropdown (upstream sized it for 2-glyph zh). Shrink the Source
+    -- dropdown so the label has room.
     ["ExBoss.CountdownVoiceSettings"] = {
-        floorWarningSource  = { x = 14 },
-        floorWarningPack    = { x = 58 },
-        floorWarningLSM     = { x = 58 },
-        floorWarningPath    = { x = 58 },
-        previewFloorWarning = { x = 134 },
         digitSource1  = { w = 30 },
         digitSource2  = { w = 30 },
         digitSource3  = { w = 30 },

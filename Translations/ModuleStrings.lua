@@ -246,10 +246,6 @@ ns.Translations.ModuleStrings.DisplayText = {
     [" Author 配置"] = " Author Config",
     [" Author（"]    = " Author (",
     ["）"]           = ")",
-
-    -- Schema-5 migration suffixes a cloned Author config name in place
-    -- (Modules/Boss/Store.lua), so it lands in ExBoss's own DB as data.
-    [" (保留的用户覆盖)"] = " (kept user overrides)",
 }
 
 -- M+ Spell Info data — display-only translations. Lookup-index keys

@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.1.2
+
+- Works with the EXBoss and ExwindCore updates released on August 24.
+- The redesigned Mythic+ aura sound settings are fully in English: the category cards, the category manager window, and the search and filter bar.
+- The Cast Progress Bar page's new general settings section (max visible, spacing, progress direction, icon position) reads in English.
+- English names for the 16 dungeon spells EXBoss added to its Season 2 list.
+- Removed leftovers from features EXBoss dropped in this update, so nothing stale is left behind.
+
 ## v1.1.1
 
 - Absorb the EXBoss v26.8.21 update.

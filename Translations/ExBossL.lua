@@ -1103,4 +1103,39 @@ ns.Translations.ExBossL = {
     ["战斗中不能切换外观配置"] = "Cannot switch appearance profiles in combat",
     ["切换失败："] = "Switch failed: ",
 
+    -- 12.1 upstream sync (v26.8.24) — the rebuilt M+ Aura Sound page
+    -- (BossPage_DungeonCommon): category quick-cards, the category
+    -- management drawer, and the filter/search toolbar. Upstream enUS
+    -- covers the card labels (地板/错误/坦克, hints, column headers);
+    -- these are the rows it missed.
+    ["%d 个 action"]           = "%d actions",
+    ["%s · 分类管理"]          = "%s · Category Management",
+    ["● 当前筛选"]             = "● Current Filter",
+    ["点击筛选"]               = "Click to filter",
+    ["其他分类"]               = "Other Categories",
+    ["此分类暂时没有 action"]  = "No actions in this category yet",
+    ["多个声音（待统一）"]     = "Multiple sounds (not unified)",
+    ["请先选择 LSM 音效"]      = "Select an LSM sound first",
+    ["已选择 %d / %d 个 action"] = "%d / %d actions selected",
+    ["显示全部动作"]           = "Showing all actions",
+    ["搜索法术、ID、单位、分类..."] = "Search spell, ID, unit, or category...",
+    ["勾选 action 归入此分类；音效仅在上方卡片设置。"]
+        = "Tick actions to assign them to this category; the sound is set only in the card above.",
+    ["应用"]                   = "Apply",
+
+    -- CastProgressBarPage moved its layout options into the shared
+    -- "Module General Settings" block; five of its field labels and the
+    -- renamed bar-appearance header are not in upstream enUS.
+    ["最大显示"]   = "Max Visible",
+    ["条目间距"]   = "Item Spacing",
+    ["进度方向"]   = "Progress Direction",
+    ["已过时间"]   = "Elapsed Time",
+    ["图标位置"]   = "Icon Position",
+    ["施法条外观"] = "Cast Bar Appearance",
+
+    -- GlobalSettingsPage descKey (resolved via L[t.descKey], never a
+    -- literal L["..."], so find_untranslated cannot see it). Upstream
+    -- dropped the GTFO section and shortened the blurb.
+    ["开怪倒数与数字语音。"] = "Pull countdown and number voices.",
+
 }
