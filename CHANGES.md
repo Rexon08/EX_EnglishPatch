@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.3
+
+- Works with the EXBoss and ExwindCore updates released on August 25.
+- The new in-game "What's new" window that EXBoss now opens after an update shows its English text.
+- The new one-click "disable EXBoss in raids" checkbox, the cast bar on/off switch and the rebuilt 5-second countdown settings all read in English.
+- Removed an old fallback for the changelog window that EXBoss no longer needs.
+
 ## v1.1.2
 
 - Works with the EXBoss and ExwindCore updates released on August 24.
