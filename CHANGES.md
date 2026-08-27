@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.4
+
+- Works with the EXBoss update released on August 27 and the ExwindCore update released on August 25.
+- The Import / Export page's new "Test: import via Wago API" button and its status messages read in English.
+- Everything else in this EXBoss update already shows in English on its own; the rest of the update is behind-the-scenes trash cooldown detection work.
+
 ## v1.1.3
 
 - Works with the EXBoss and ExwindCore updates released on August 25.

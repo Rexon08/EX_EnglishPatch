@@ -1104,34 +1104,27 @@ ns.Translations.ExBossL = {
     ["切换失败："] = "Switch failed: ",
 
     -- 12.1 upstream sync (v26.8.24) — the rebuilt M+ Aura Sound page
-    -- (BossPage_DungeonCommon): category quick-cards, the category
-    -- management drawer, and the filter/search toolbar. Upstream enUS
-    -- covers the card labels (地板/错误/坦克, hints, column headers);
-    -- these are the rows it missed.
-    ["%d 个 action"]           = "%d actions",
-    ["%s · 分类管理"]          = "%s · Category Management",
-    ["● 当前筛选"]             = "● Current Filter",
-    ["点击筛选"]               = "Click to filter",
-    ["其他分类"]               = "Other Categories",
-    ["此分类暂时没有 action"]  = "No actions in this category yet",
+    -- (BossPage_DungeonCommon) and the CastProgressBar general-settings
+    -- block. Upstream enUS caught up in v26.8.27 (its "2026-08-25
+    -- localized gap fill"); the rows that matched ours verbatim were
+    -- dropped, these stay because our wording is deliberately different
+    -- (result-line phrasing, shorter labels for the settings grid).
     ["多个声音（待统一）"]     = "Multiple sounds (not unified)",
     ["请先选择 LSM 音效"]      = "Select an LSM sound first",
-    ["已选择 %d / %d 个 action"] = "%d / %d actions selected",
     ["显示全部动作"]           = "Showing all actions",
     ["搜索法术、ID、单位、分类..."] = "Search spell, ID, unit, or category...",
     ["勾选 action 归入此分类；音效仅在上方卡片设置。"]
         = "Tick actions to assign them to this category; the sound is set only in the card above.",
-    ["应用"]                   = "Apply",
-
-    -- CastProgressBarPage moved its layout options into the shared
-    -- "Module General Settings" block; five of its field labels and the
-    -- renamed bar-appearance header are not in upstream enUS.
     ["最大显示"]   = "Max Visible",
-    ["条目间距"]   = "Item Spacing",
-    ["进度方向"]   = "Progress Direction",
-    ["已过时间"]   = "Elapsed Time",
-    ["图标位置"]   = "Icon Position",
-    ["施法条外观"] = "Cast Bar Appearance",
+
+    -- v26.8.27 sync — ImportExportPage "import via the public Wago API"
+    -- test button (Modules/Wago/API.lua, _G.EXBossWagoAPI) + its status
+    -- lines. Not in upstream enUS.
+    ["测试：通过 Wago API 导入"]        = "Test: import via Wago API",
+    ["Wago API 不可用"]                 = "Wago API unavailable",
+    ["Wago API 导入失败："]             = "Wago API import failed: ",
+    ["Wago API 导入成功"]               = "Wago API import succeeded",
+    ["Wago API 导入成功，正在重载界面"] = "Wago API import succeeded, reloading UI",
 
     -- GlobalSettingsPage descKey (resolved via L[t.descKey], never a
     -- literal L["..."], so find_untranslated cannot see it). Upstream
