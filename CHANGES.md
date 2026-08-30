@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.5
+
+- Works with the EXBoss update released on August 29 and the ExwindCore update released on August 28.
+- The "What's new" window for this update shows in English automatically — no new translations were needed.
+- This EXBoss update is all behind-the-scenes work on trash cooldown detection (fixing mobs Blizzard recently changed), so everything on screen stays fully in English.
+
 ## v1.1.4
 
 - Works with the EXBoss update released on August 27 and the ExwindCore update released on August 25.
