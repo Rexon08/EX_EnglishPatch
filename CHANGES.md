@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.6
+
+- Works with the EXBoss updates released on September 1 and 2 and the ExwindCore update released on September 1.
+- The "What's new" window for these updates (performance work, anchor fixes, trash mob detection changes) shows in English automatically.
+- Kings' Rest: the newly tracked "Shadow of Zul" mob and its "Pool of Darkness" ability show their English names on cooldown bars and in the "What's new" window.
+- The Edit Mode panel's help line under its title now reads in English.
+
 ## v1.1.5
 
 - Works with the EXBoss update released on August 29 and the ExwindCore update released on August 28.

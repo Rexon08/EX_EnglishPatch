@@ -541,6 +541,7 @@ ns.Translations.MobSpells.MobNames = {
     ["影裔勇士"]     = "Shadow-Borne Champion",
     ["葬礼构造体"]    = "Interment Construct",
     ["总管姆巴拉"]    = "Seneschal M'bara",
+    ["祖尔之影"]     = "Shadow of Zul",
 
     -- ─ Temple of Sethraliss ─────────────────────────────────────────────
     ["宝珠守望者"]   = "Orb Watcher",

@@ -317,4 +317,13 @@ ns.Translations.ExwindCoreL = {
     -- (~95 px after the 34 px box) runs under the EditBox. "Use Anchor"
     -- ends ~20 px short of it.
     ["启用锚点"] = "Use Anchor",
+
+    -- 2026-09-02 upstream sync (ExwindCore v26.9.1.0409)
+    -- ExwindEvent unit-event pcall failure print; wording mirrors the
+    -- sibling "Event error" row upstream enUS already ships.
+    ["|cffff0000[ExwindTools] 单位事件错误 [%s][%s]: %s|r"]
+        = "|cffff0000[ExwindTools] Unit event error [%s][%s]: %s|r",
+    -- Edit-mode control panel subtitle (520 px panel, GameFontHighlightSmall).
+    ["选择需要显示的模块；左键拖拽模块，右键打开设置"]
+        = "Pick the modules to show. Left-drag a module to move it, right-click to open its settings.",
 }
