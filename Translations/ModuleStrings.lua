@@ -246,6 +246,31 @@ ns.Translations.ModuleStrings.DisplayText = {
     [" Author 配置"] = " Author Config",
     [" Author（"]    = " Author (",
     ["）"]           = ")",
+
+    -- v26.9.13 TemporaryBossPreview: the Boss page's test-start button
+    -- prints the refusal reason via global print(); Patches/BossPreviewText
+    -- translates the returned reason before it gets there.
+    ["真实首领战进行中"]         = "A real boss encounter is in progress",
+    ["当前首领没有可测试技能"]     = "The current boss has no abilities to test",
+    ["当前配置没有启用的测试技能"]  = "No enabled abilities to test in the current configuration",
+
+    -- v26.9.13 /exewtest (TargetAlert test command) chat output via
+    -- ExBoss.Print.Say — concatenated fragments, so each piece is a key.
+    ["用法：/exewtest [eventID] [severity]；未填参数会测试声明表的第一条规则。"]
+        = "Usage: /exewtest [eventID] [severity]; with no arguments the first rule in the declaration table is tested.",
+    ["用法：/exewtest [eventID] [severity]"] = "Usage: /exewtest [eventID] [severity]",
+    ["测试未执行：声明表没有 eventID="]     = "Test not run: the declaration table has no rule for eventID=",
+    [" 的规则。"]                          = ".",
+    ["测试未执行：规则没有有效 severity。"]  = "Test not run: the rule has no valid severity.",
+    ["测试没有命中：eventID="]             = "Test did not match: eventID=",
+    ["，注入 severity="]                   = ", injected severity=",
+    ["；请检查声明的 severity。"]           = "; check the declared severity.",
+    ["测试命中声明，但没有建立显示；请检查 Boss 页被点名提示及其显示/语音勾选。"]
+        = "Test matched a declaration but created no display; check the Boss page's targeted-alert settings and their display/voice checkboxes.",
+    ["测试已触发 "]                        = "Test fired ",
+    [" 个显示动作（eventID="]              = " display action(s) (eventID=",
+    ["，severity="]                        = ", severity=",
+    ["）。"]                               = ").",
 }
 
 -- M+ Spell Info data — display-only translations. Lookup-index keys
@@ -608,6 +633,10 @@ ns.Translations.MobSpells.MobNames = {
     ["乌拉特克神选者"]  = "Ula'tek's Chosen",
     ["仪式首领"]     = "Ritual Chieftain",
     ["振响的扭缠蛇"]   = "Rattling Writhe",
+    -- TrashMobTraits-only rows (v26.9.13): the Altar of Fangs trash-health
+    -- bars label units with the trait name via Trash.State.lastResolvedName.
+    ["毒液水蛭"]     = "Venom Leech",
+    ["活体毒液"]     = "Living Venom",
 }
 
 -- Window title (raw FontString text in source — not L[...]).

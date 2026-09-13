@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.1.7
+
+- Works with the EXBoss updates released September 10 to 13 and the ExwindCore update released September 11.
+- The new "Dungeon Extras" settings page, its Edit Mode panel and the "What's new" window for these updates show in English automatically.
+- Altar of Fangs: the optional trash health bars (for example "Living Venom" before the third boss) label mobs with their English names.
+- The Boss page's revived test buttons and the "/exewtest" targeted-alert test command print their messages in English.
+- Voice/Config page: the "Author config manager" card text was shortened so it no longer runs into the dropdown below it.
+
 ## v1.1.6
 
 - Works with the EXBoss updates released on September 1 and 2 and the ExwindCore update released on September 1.

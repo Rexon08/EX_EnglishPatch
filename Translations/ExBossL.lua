@@ -87,6 +87,11 @@ ns.Translations.ExBossL = {
     ["语音/配置页面依赖 ExwindTools.UI，当前未就绪。请确认 ExwindCore 已正确加载后重开面板。"]
         = "The Voice/Config page depends on ExwindTools.UI, which is not ready. Confirm ExwindCore loaded correctly and reopen the panel.",
 
+    -- VoicePackPage v26.9.13 "Author config manager" card: upstream's enUS
+    -- desc wraps to 3 lines in a 2-line card and runs into the dropdown.
+    ["这里只管理 Author。输入新名称后可复制为独立配置；User 覆盖始终绑定 Author。"]
+        = "Author profiles only. A new name copies one; User overrides bind to Author.",
+
     -- SpellPage row reset button
     ["重置"] = "Reset",
 
