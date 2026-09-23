@@ -637,6 +637,42 @@ ns.Translations.MobSpells.MobNames = {
     -- bars label units with the trait name via Trash.State.lastResolvedName.
     ["毒液水蛭"]     = "Venom Leech",
     ["活体毒液"]     = "Living Venom",
+    ["原始毒蛇"]     = "Primal Serpent",
+    -- Remaining TrashMobTraits-only names (wowhead EN/zhCN round-trip), so
+    -- any future Dungeon Extras producer labels its bars in English.
+    -- Temple of Sethraliss
+    ["无信征服者"]   = "Faithless Subjugator",
+    ["剧毒蝰蛇"]     = "Toxic Viper",
+    ["灌注能量的唤雷者"] = "Imbued Stormcaller",
+    ["隐秘之牙"]     = "Shrouded Fang",
+    ["倒刺三叶虫"]   = "Barbed Krolusk",
+    ["静电异常体"]   = "Static Anomaly",
+    ["风暴能手"]     = "Storm Adept",
+    ["闪电毒蛇"]     = "Lightning Serpent",
+    ["火花引导者"]   = "Spark Channeler",
+    ["尽职的驯兽师"] = "Dutiful Tamer",
+    ["育巢者"]       = "Brood Tender",
+    ["无信折磨者"]   = "Faithless Tormentor",
+    ["精华污染者"]   = "Essence Defiler",
+    -- Ruby Life Pools
+    ["注能龙崽"]     = "Infused Whelp",
+    ["深石塑地者"]   = "Deepstone Earthshaper",
+    ["缚地守护者"]   = "Earthbound Guardian",
+    ["灼烧元素"]     = "Scorchling",
+    ["拜荒织烬者"]   = "Primalist Cinderweaver",
+    ["原始雷云"]     = "Primal Thundercloud",
+    ["风暴战士"]     = "Storm Warrior",
+    -- Kings' Rest
+    ["祖尔的爪牙"]   = "Minion of Zul",
+    ["黯影战士"]     = "Umbral Warrior",
+    ["幻影妖术祭司"] = "Phantom Hex Priest",
+    ["幻影萨满祭司"] = "Spectral Shaman",
+    ["活性黄金"]     = "Animated Gold",
+    ["爆裂图腾"]     = "Explosive Totem",
+    ["洪流图腾"]     = "Torrent Totem",
+    ["血誓刺客"]     = "Bloodsworn Assassin",
+    ["防腐液"]       = "Embalming Fluid",
+    ["未完成的木乃伊"] = "Half-Finished Mummy",
 }
 
 -- Window title (raw FontString text in source — not L[...]).

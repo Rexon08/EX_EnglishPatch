@@ -1136,4 +1136,14 @@ ns.Translations.ExBossL = {
     -- dropped the GTFO section and shortened the blurb.
     ["开怪倒数与数字语音。"] = "Pull countdown and number voices.",
 
+    -- v26.9.15 sync — per-boss "extras" cards on the Boss page (first
+    -- one: Murder Row / Xathuux vulnerability alert). Encounter files
+    -- capture these at EXBoss load, so Patches/BossExtrasText also feeds
+    -- them through DisplayText. Not in upstream enUS.
+    ["易伤提示"]     = "Vulnerability Alert",
+    ["启用易伤提示"] = "Enable vulnerability alert",
+    ["提前 4 秒提示易伤，随后显示持续 15 秒的 30% 易伤阶段倒数。"]
+        = "Warns 4 seconds before the boss becomes vulnerable, then counts down the 15-second 30% vulnerability window.",
+    ["配置不可用"]   = "Configuration unavailable",
+
 }

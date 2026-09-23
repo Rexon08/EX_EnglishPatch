@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.8
+
+- Works with the EXBoss and ExwindCore updates released on September 15.
+- Murder Row: the new "Vulnerability Alert" option for Xathuux the Annihilator shows its name, description and checkbox in English on the Boss page.
+- The "What's new" window for this update (Ziekett timeline fix) shows in English automatically.
+- Trash mobs from Temple of Sethraliss, Ruby Life Pools, Kings' Rest and Altar of Fangs now have English names ready, so upcoming dungeon health bars and alerts label them in English.
+
 ## v1.1.7
 
 - Works with the EXBoss updates released September 10 to 13 and the ExwindCore update released September 11.
